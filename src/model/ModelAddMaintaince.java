@@ -115,24 +115,23 @@ public class ModelAddMaintaince {
         return 0;
     }
     
-    public int dbUpdateData(int id , String yacht, String maintaince_type, String mechanic, String date, String status) {
+    public int dbUpdateData(int id , String yacht, String maintaince_type, String mechanic, String status) {
         try {
             String dblocation = "jdbc:mysql://localhost/eadproject";
             String dbuser = "root";
             String dbpassword = "";
             Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
-            PreparedStatement pst = conn.prepareStatement("UPDATE maintaince_yacht SET my_yacht=?,my_maintaince_type=?,my_mechanic=?,my_date=? ,ma_status=? WHERE  my_id=?");
+            PreparedStatement pst = conn.prepareStatement("UPDATE maintaince_yacht SET my_yacht=?,my_maintaince_type=?,my_mechanic=? ,ma_status=? WHERE  my_id=?");
             pst.setString(1, yacht);
             pst.setString(2, maintaince_type);
             pst.setString(3, mechanic);
-            pst.setString(4, date);
-            pst.setString(5, status);
-            pst.setInt(6, id);
+            pst.setString(4, status);
+            pst.setInt(5, id);
             int value = pst.executeUpdate();
             if (value == 1) {
                 return 1;
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return 0;
@@ -150,7 +149,7 @@ public class ModelAddMaintaince {
             if (value == 1) {
                 return 1;
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return 0;

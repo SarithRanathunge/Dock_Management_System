@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -23,14 +24,14 @@ import javax.swing.table.TableModel;
  *
  * @author Sarith
  */
-public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
+public class ViewManagerInterfaceAddMaintaince extends javax.swing.JFrame {
 
     private ControllerAddMaintaince controller;
 
     /**
      * Creates new form ManagerInterfaceAddMaintaince
      */
-    public ManagerInterfaceAddMaintaince() {
+    public ViewManagerInterfaceAddMaintaince() {
         initComponents();
         date();
         controller = new ControllerAddMaintaince();
@@ -44,6 +45,16 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
         txt_main_no.setEnabled(false);
         txt_main_no.setDisabledTextColor(Color.black);
         showDataTable();
+        Color();
+        txt_emp_position_error.setText(null);
+    }
+
+    public void Color() {
+        cbx_yacht.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cbx_maintaince_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cbx_mechanic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        dc_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cbx_search_yacht.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
     public void date() {
@@ -53,12 +64,19 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
         lblDate.setText(dd);
     }
 
+    public void getSearchYacht() {
+        cbx_search_yacht.removeAllItems();
+        List<String> setItems = controller.getYacht();
+        for (String setItem : setItems) {
+            cbx_search_yacht.addItem(setItem);
+        }
+    }
+
     public void getYacht() {
         cbx_yacht.removeAllItems();
         List<String> setItems = controller.getYacht();
         for (String setItem : setItems) {
             cbx_yacht.addItem(setItem);
-            cbx_search_yacht.addItem(setItem);
         }
     }
 
@@ -98,8 +116,6 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
         lblDate = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblUserPosition = new javax.swing.JLabel();
-        lblUser = new javax.swing.JLabel();
         lblTime1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -121,7 +137,6 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_maintaince = new javax.swing.JTable();
-        txt_emp_position_error1 = new javax.swing.JLabel();
         btnSearchMaintainceDetails = new javax.swing.JButton();
         btnRefreshTableData = new javax.swing.JButton();
         dc_date = new com.toedter.calendar.JDateChooser();
@@ -192,7 +207,7 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
 
         btnMaintaince.setBackground(new java.awt.Color(0, 204, 204));
         btnMaintaince.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnMaintaince.setText("Maintaince");
+        btnMaintaince.setText("Maintenance");
         btnMaintaince.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnMaintaince.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,17 +291,6 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
         jLabel5.setText("23:04");
         jLabel5.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        lblUserPosition.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUserPosition.setText("Manager");
-        lblUserPosition.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblUserPosition.setPreferredSize(new java.awt.Dimension(200, 50));
-
-        lblUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUser.setText("Sarith Ranathunge");
-        lblUser.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        lblUser.setPreferredSize(new java.awt.Dimension(200, 50));
-
         lblTime1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTime1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTime1.setText("Date :");
@@ -307,24 +311,14 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 710, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblUserPosition, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                    .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(898, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUserPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -338,10 +332,10 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
         jPanel4.setPreferredSize(new java.awt.Dimension(1120, 745));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel8.setText("Add Maintaince To Yacht");
+        jLabel8.setText("Add Maintenance To Yacht");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Yacht                  :");
+        jLabel3.setText("Yacht                     :");
 
         txt_emp_position_error.setForeground(new java.awt.Color(255, 0, 0));
         txt_emp_position_error.setText("The Error");
@@ -397,24 +391,42 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
             }
         });
 
+        cbx_yacht.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbx_yachtMouseClicked(evt);
+            }
+        });
+
+        cbx_maintaince_type.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbx_maintaince_typeMouseClicked(evt);
+            }
+        });
+
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("Maintaince Type :");
+        jLabel10.setText("Maintenance Type :");
+
+        cbx_mechanic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbx_mechanicMouseClicked(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setText("Mechanic            :");
+        jLabel11.setText("Mechanic               :");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setText("Maintaince Date :");
+        jLabel12.setText("Maintenance Date :");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel9.setText("Daily Maintaince ");
+        jLabel9.setText("Daily Maintenance ");
 
         tbl_maintaince.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Maintaince No.", "Yacht", "Maintaince Type", "Mechanic", "Manitaince Date", "Status"
+                "Maintenance No.", "Yacht", "Maintenance  Type", "Mechanic", "Maintenance  Date", "Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -431,9 +443,6 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(tbl_maintaince);
-
-        txt_emp_position_error1.setForeground(new java.awt.Color(255, 0, 0));
-        txt_emp_position_error1.setText("The Error");
 
         btnSearchMaintainceDetails.setBackground(new java.awt.Color(0, 102, 255));
         btnSearchMaintainceDetails.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -455,11 +464,28 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
             }
         });
 
+        dc_date.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dc_dateMouseClicked(evt);
+            }
+        });
+        dc_date.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                dc_dateKeyTyped(evt);
+            }
+        });
+
+        cbx_search_yacht.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbx_search_yachtMouseClicked(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Yacht                  :");
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel13.setText("Maintaince No   :");
+        jLabel13.setText("Maintenance No   :");
 
         txt_main_no.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_main_no.setText("\n");
@@ -486,7 +512,7 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
                                 .addComponent(cbx_yacht, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnDeleteDrtails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -507,27 +533,24 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
                                     .addComponent(txt_main_no, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(btnUpdateDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 11, Short.MAX_VALUE)))
+                        .addGap(0, 6, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_emp_position_error1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbx_search_yacht, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbx_search_yacht, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSearchMaintainceDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRefreshTableData, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
+                            .addComponent(btnRefreshTableData, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE))
                         .addGap(18, 18, 18))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 18, Short.MAX_VALUE)))
+                        .addGap(0, 12, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -558,7 +581,7 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(txt_main_no, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnUpdateDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -576,8 +599,6 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
                         .addComponent(jSeparator1))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_emp_position_error1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSearchMaintainceDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -612,7 +633,7 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeActionPerformed
-        ManagerInterfaceEmployee mie = new ManagerInterfaceEmployee();
+        ViewManagerInterfaceEmployee mie = new ViewManagerInterfaceEmployee();
         mie.setVisible(true);
         mie.pack();
         mie.setLocationRelativeTo(null);
@@ -620,7 +641,7 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmployeeActionPerformed
 
     private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
-        ManagerInterfaceCustomer mic = new ManagerInterfaceCustomer();
+        ViewManagerInterfaceCustomer mic = new ViewManagerInterfaceCustomer();
         mic.setVisible(true);
         mic.pack();
         mic.setLocationRelativeTo(null);
@@ -628,7 +649,7 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerActionPerformed
 
     private void btnYachtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYachtActionPerformed
-        ManagerInterfaceYacht miy = new ManagerInterfaceYacht();
+        ViewManagerInterfaceYacht miy = new ViewManagerInterfaceYacht();
         miy.setVisible(true);
         miy.pack();
         miy.setLocationRelativeTo(null);
@@ -636,7 +657,7 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_btnYachtActionPerformed
 
     private void btnDockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDockActionPerformed
-        ManagerInterfaceDock mdock = new ManagerInterfaceDock();
+        ViewManagerInterfaceDock mdock = new ViewManagerInterfaceDock();
         mdock.setVisible(true);
         mdock.pack();
         mdock.setLocationRelativeTo(null);
@@ -648,7 +669,7 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMaintainceActionPerformed
 
     private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
-        ManagerInterfacePayment mip = new ManagerInterfacePayment();
+        ViewManagerInterfacePayment mip = new ViewManagerInterfacePayment();
         mip.setVisible(true);
         mip.pack();
         mip.setLocationRelativeTo(null);
@@ -658,7 +679,7 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to log out?", "conform", JOptionPane.YES_NO_OPTION);
         if (logout == JOptionPane.YES_OPTION) {
-            Login loginpage = new Login();
+            ViewLogin loginpage = new ViewLogin();
             loginpage.setVisible(true);
             loginpage.pack();
             loginpage.setLocationRelativeTo(null);
@@ -667,33 +688,38 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        dc_date.setDate(null);
-        txt_main_no.setText(null);
+        int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to clear the data?", "conform", JOptionPane.YES_NO_OPTION);
+        if (logout == JOptionPane.YES_OPTION) {
+            cbx_yacht.removeAllItems();
+            cbx_maintaince_type.removeAllItems();
+            cbx_mechanic.removeAllItems();
+            dc_date.setDate(null);
+            txt_main_no.setText(null);
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnUpdateDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDetailsActionPerformed
         String Yacht = cbx_yacht.getSelectedItem().toString();
         String maintaince_type = cbx_maintaince_type.getSelectedItem().toString();
         String Mechanic = cbx_mechanic.getSelectedItem().toString();
-        String date = dc_date.getDate().toString();
         String status = "On going";
         int no = Integer.parseInt(txt_main_no.getText());
-        int insertdata = controller.updatetdata(no, Yacht, maintaince_type, Mechanic, date, status);
+        int insertdata = controller.updatetdata(no, Yacht, maintaince_type, Mechanic, status);
+        txt_emp_position_error.setText(null);
 
-        if (date.equals("")) {
-
-        } else {
-            int logout = JOptionPane.showConfirmDialog(null, "Date of the Maintaince can not updated.", "Conform", JOptionPane.YES_NO_OPTION);
-            if (logout == JOptionPane.YES_OPTION) {
-                if (insertdata == 1) {
-                    JOptionPane.showMessageDialog(this, " The data has been updated.");
-                    dc_date.setDate(null);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Sorry, The data not updated. Try again.");
-                }
+        int logout = JOptionPane.showConfirmDialog(null, "Are you sure, do you want to update.", "Conform", JOptionPane.YES_NO_OPTION);
+        if (logout == JOptionPane.YES_OPTION) {
+            if (insertdata == 1) {
+                JOptionPane.showMessageDialog(this, " The data has been updated.");
+                dc_date.setDate(null);
+                txt_main_no.setText(null);
+            } else {
+                JOptionPane.showMessageDialog(this, "Sorry, The data not updated. Try again.");
             }
-
         }
+
+
     }//GEN-LAST:event_btnUpdateDetailsActionPerformed
 
     private void btnDeleteDrtailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDrtailsActionPerformed
@@ -706,6 +732,9 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
             } else {
                 if (deleteData == 1) {
                     JOptionPane.showMessageDialog(this, "The data has been deleted.");
+                    cbx_yacht.removeAllItems();
+                    cbx_maintaince_type.removeAllItems();
+                    cbx_mechanic.removeAllItems();
                     dc_date.setDate(null);
                     txt_main_no.setText(null);
                 } else {
@@ -717,7 +746,7 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteDrtailsActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        ManagerInterfaceMaintaince mim = new ManagerInterfaceMaintaince();
+        ViewManagerInterfaceMaintaince mim = new ViewManagerInterfaceMaintaince();
         mim.setVisible(true);
         mim.pack();
         mim.setLocationRelativeTo(null);
@@ -725,25 +754,32 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void btnSearchMaintainceDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchMaintainceDetailsActionPerformed
-        String search = cbx_search_yacht.getSelectedItem().toString();
+        if (cbx_search_yacht.getSelectedItem() != null) {
+            cbx_search_yacht.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            String search = cbx_search_yacht.getSelectedItem().toString();
 
-        try {
-            String dblocation = "jdbc:mysql://localhost/eadproject";
-            String dbuser = "root";
-            String dbpassword = "";
-            Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
-            Statement st = conn.createStatement();
-            ResultSet rst = st.executeQuery("SELECT * FROM maintaince_yacht WHERE emp_id='" + search + "'");
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_maintaince.getModel();
-            tblModel.setRowCount(0);
-            while (rst.next()) {
-                String[] tbData = {rst.getString("my_id"), rst.getString("my_yacht"), rst.getString("my_maintaince_type"), rst.getString("my_mechanic"), rst.getString("my_date"), rst.getString("ma_status")};
-                tblModel.addRow(tbData);
+            try {
+                String dblocation = "jdbc:mysql://localhost/eadproject";
+                String dbuser = "root";
+                String dbpassword = "";
+                Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
+                Statement st = conn.createStatement();
+                ResultSet rst = st.executeQuery("SELECT * FROM maintaince_yacht WHERE my_yacht='" + search + "'");
+                DefaultTableModel tblModel = (DefaultTableModel) tbl_maintaince.getModel();
+                tblModel.setRowCount(0);
+                while (rst.next()) {
+                    String[] tbData = {rst.getString("my_id"), rst.getString("my_yacht"), rst.getString("my_maintaince_type"), rst.getString("my_mechanic"), rst.getString("my_date"), rst.getString("ma_status")};
+                    tblModel.addRow(tbData);
+                }
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
             }
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } else if (cbx_search_yacht.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Please, select yacht ID before click the search button.");
+            cbx_search_yacht.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
         }
+
 
     }//GEN-LAST:event_btnSearchMaintainceDetailsActionPerformed
 
@@ -767,23 +803,26 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
         }
     }
     private void btnRefreshTableDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshTableDataActionPerformed
+        cbx_search_yacht.removeAllItems();
+        cbx_search_yacht.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         showDataTable();
     }//GEN-LAST:event_btnRefreshTableDataActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String Yacht = cbx_yacht.getSelectedItem().toString();
-        String maintaince_type = cbx_maintaince_type.getSelectedItem().toString();
-        String Mechanic = cbx_mechanic.getSelectedItem().toString();
-        String date = dc_date.getDate().toString();
-        String status = "On going";
-        int insertdata = controller.insertdata(Yacht, maintaince_type, Mechanic, date, status);
-
-        if (date.equals("")) {
-
+        if (dc_date.getDate() == null) {
+            txt_emp_position_error.setText("Please, add a maintenance date.");
         } else {
+            String Yacht = cbx_yacht.getSelectedItem().toString();
+            String maintaince_type = cbx_maintaince_type.getSelectedItem().toString();
+            String Mechanic = cbx_mechanic.getSelectedItem().toString();
+            String date = dc_date.getDate().toString();
+            String status = "On going";
+            txt_emp_position_error.setText(null);
+            int insertdata = controller.insertdata(Yacht, maintaince_type, Mechanic, date, status);
             if (insertdata == 1) {
                 JOptionPane.showMessageDialog(this, " The data added into database.");
                 dc_date.setDate(null);
+                txt_main_no.setText(null);
             } else {
                 JOptionPane.showMessageDialog(this, "Sorry, The data not insert into database. Try again.");
             }
@@ -826,11 +865,36 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tbl_maintainceMouseClicked
 
+    private void cbx_yachtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_yachtMouseClicked
+        getYacht();
+    }//GEN-LAST:event_cbx_yachtMouseClicked
+
+    private void cbx_maintaince_typeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_maintaince_typeMouseClicked
+        getMaintaince();
+    }//GEN-LAST:event_cbx_maintaince_typeMouseClicked
+
+    private void cbx_mechanicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_mechanicMouseClicked
+        getMechanic();
+    }//GEN-LAST:event_cbx_mechanicMouseClicked
+
+    private void cbx_search_yachtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_search_yachtMouseClicked
+        cbx_search_yacht.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        getSearchYacht();
+    }//GEN-LAST:event_cbx_search_yachtMouseClicked
+
+    private void dc_dateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dc_dateMouseClicked
+        
+    }//GEN-LAST:event_dc_dateMouseClicked
+
+    private void dc_dateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dc_dateKeyTyped
+        txt_emp_position_error.setText(null);
+    }//GEN-LAST:event_dc_dateKeyTyped
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        ManagerInterfaceAddMaintaince miam = new ManagerInterfaceAddMaintaince();
+        ViewManagerInterfaceAddMaintaince miam = new ViewManagerInterfaceAddMaintaince();
         miam.setVisible(true);
         miam.pack();
         miam.setLocationRelativeTo(null);
@@ -876,11 +940,8 @@ public class ManagerInterfaceAddMaintaince extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblTime1;
-    private javax.swing.JLabel lblUser;
-    private javax.swing.JLabel lblUserPosition;
     private javax.swing.JTable tbl_maintaince;
     private javax.swing.JLabel txt_emp_position_error;
-    private javax.swing.JLabel txt_emp_position_error1;
     private javax.swing.JTextField txt_main_no;
     // End of variables declaration//GEN-END:variables
 }

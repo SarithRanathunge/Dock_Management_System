@@ -16,28 +16,29 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import controller.ControllerYachtPage;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Sarith
  */
-public class ManagerInterfaceYacht extends javax.swing.JFrame {
+public class ViewManagerInterfaceYacht extends javax.swing.JFrame {
 
     private ControllerYachtPage controller;
 
     /**
      * Creates new form ManagerInterfaceYacht
      */
-    public ManagerInterfaceYacht() {
+    public ViewManagerInterfaceYacht() {
         initComponents();
         controller = new ControllerYachtPage();
         date();
-        getItems();
         btnYacht.setBackground(Color.white);
         Font boldFont = new Font(btnYacht.getFont().getFontName(), Font.BOLD, btnYacht.getFont().getSize());
         btnYacht.setFont(boldFont);
         //btnYacht.setBorder(new EmptyBorder(0, 0, 0, 0));
+        cbx_yacht_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
     public void date() {
@@ -73,21 +74,18 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblUserPosition = new javax.swing.JLabel();
-        lblUser = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         lblTime1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        txt_emp_position_error = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cbx_yacht_id = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_maintaince_details = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tbl_payment_details_history = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_yacht_details = new javax.swing.JTable();
@@ -155,7 +153,7 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
 
         btnMaintaince.setBackground(new java.awt.Color(0, 204, 204));
         btnMaintaince.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnMaintaince.setText("Maintaince");
+        btnMaintaince.setText("Maintenance");
         btnMaintaince.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnMaintaince.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,17 +232,6 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
         jLabel5.setText("23:04");
         jLabel5.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        lblUserPosition.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUserPosition.setText("Manager");
-        lblUserPosition.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblUserPosition.setPreferredSize(new java.awt.Dimension(200, 50));
-
-        lblUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUser.setText("Sarith Ranathunge");
-        lblUser.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        lblUser.setPreferredSize(new java.awt.Dimension(200, 50));
-
         lblDate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDate.setText("10 / 10 / 2023");
@@ -265,31 +252,20 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
                         .addGap(162, 162, 162)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 892, Short.MAX_VALUE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
-                        .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblUserPosition, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap())
+                        .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(898, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUserPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -305,42 +281,42 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel8.setText("Yacht Details");
 
-        txt_emp_position_error.setForeground(new java.awt.Color(255, 0, 0));
-        txt_emp_position_error.setText("The Error");
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Yacht ID      :");
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        cbx_yacht_id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbx_yacht_idMouseClicked(evt);
+            }
+        });
+
+        tbl_maintaince_details.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tbl_maintaince_details.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Maintaince Type", "Mechanic", "Date", "Price", "Note"
+                "Maintenance Type", "Mechanic", "Date", "Price", "Status", "Maintenance Note"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_maintaince_details);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel9.setText("Maintaince Details");
+        jLabel9.setText("Maintenance Details");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel10.setText("Payment Details History");
 
-        jTable3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_payment_details_history.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tbl_payment_details_history.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Payment Details", "Payment Date", "Payment Time", "Payment Amount"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tbl_payment_details_history);
 
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -381,13 +357,12 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbx_yacht_id, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
-                            .addComponent(txt_emp_position_error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -398,9 +373,12 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
                             .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1085, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1093, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1094, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1094, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1094, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,9 +386,7 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_emp_position_error, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(cbx_yacht_id, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -418,7 +394,7 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSearchYachtDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(13, 13, 13)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -453,7 +429,7 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeActionPerformed
-        ManagerInterfaceEmployee mie = new ManagerInterfaceEmployee();
+        ViewManagerInterfaceEmployee mie = new ViewManagerInterfaceEmployee();
         mie.setVisible(true);
         mie.pack();
         mie.setLocationRelativeTo(null);
@@ -461,7 +437,7 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmployeeActionPerformed
 
     private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
-        ManagerInterfaceCustomer mic = new ManagerInterfaceCustomer();
+        ViewManagerInterfaceCustomer mic = new ViewManagerInterfaceCustomer();
         mic.setVisible(true);
         mic.pack();
         mic.setLocationRelativeTo(null);
@@ -473,7 +449,7 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_btnYachtActionPerformed
 
     private void btnDockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDockActionPerformed
-        ManagerInterfaceDock mdock = new ManagerInterfaceDock();
+        ViewManagerInterfaceDock mdock = new ViewManagerInterfaceDock();
         mdock.setVisible(true);
         mdock.pack();
         mdock.setLocationRelativeTo(null);
@@ -481,7 +457,7 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDockActionPerformed
 
     private void btnMaintainceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaintainceActionPerformed
-        ManagerInterfaceAddMaintaince mim = new ManagerInterfaceAddMaintaince();
+        ViewManagerInterfaceAddMaintaince mim = new ViewManagerInterfaceAddMaintaince();
         mim.setVisible(true);
         mim.pack();
         mim.setLocationRelativeTo(null);
@@ -489,7 +465,7 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMaintainceActionPerformed
 
     private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
-        ManagerInterfacePayment mip = new ManagerInterfacePayment();
+        ViewManagerInterfacePayment mip = new ViewManagerInterfacePayment();
         mip.setVisible(true);
         mip.pack();
         mip.setLocationRelativeTo(null);
@@ -499,7 +475,7 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to log out?", "conform", JOptionPane.YES_NO_OPTION);
         if (logout == JOptionPane.YES_OPTION) {
-            Login loginpage = new Login();
+            ViewLogin loginpage = new ViewLogin();
             loginpage.setVisible(true);
             loginpage.pack();
             loginpage.setLocationRelativeTo(null);
@@ -508,7 +484,7 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ManagerInterfaceAddYacht miay = new ManagerInterfaceAddYacht();
+        ViewManagerInterfaceAddYacht miay = new ViewManagerInterfaceAddYacht();
         miay.setVisible(true);
         miay.pack();
         miay.setLocationRelativeTo(null);
@@ -516,32 +492,83 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnSearchYachtDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchYachtDetailsActionPerformed
-        String search = cbx_yacht_id.getSelectedItem().toString();
+        if (cbx_yacht_id.getSelectedItem() != null) {
 
-        try {
-            String dblocation = "jdbc:mysql://localhost/eadproject";
-            String dbuser = "root";
-            String dbpassword = "";
-            Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
-            Statement st = conn.createStatement();
-            ResultSet rst = st.executeQuery("SELECT customer.cu_name, yacht.ya_do_id, yacht.ya_model, yacht.ya_width, yacht.ya_length, yacht.ya_speed, yacht.ya_fuel_type, yacht.ya_fuel_capacity, yacht.ya_engine_no, yacht.ya_start_date, yacht.ya_due_date, yacht.ya_duration FROM customer JOIN yacht WHERE ya_id='" + search + "'");
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_yacht_details.getModel();
-            tblModel.setRowCount(0);
-            while (rst.next()) {
-                String[] tbData = {rst.getString("cu_name"), rst.getString("ya_do_id"), rst.getString("ya_model"), rst.getString("ya_width"), rst.getString("ya_length"), rst.getString("ya_speed"), rst.getString("ya_fuel_type"), rst.getString("ya_fuel_capacity"), rst.getString("ya_engine_no"), rst.getString("ya_start_date"), rst.getString("ya_due_date"), rst.getString("ya_duration")};
-                tblModel.addRow(tbData);
+            int search = Integer.parseInt(cbx_yacht_id.getSelectedItem().toString());
+            try {
+                String dblocation = "jdbc:mysql://localhost/eadproject";
+                String dbuser = "root";
+                String dbpassword = "";
+                Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
+                Statement st = conn.createStatement();
+                ResultSet rst = st.executeQuery("SELECT customer.cu_name, yacht.ya_do_id, yacht.ya_model, yacht.ya_width, yacht.ya_length, yacht.ya_speed, yacht.ya_fuel_type, yacht.ya_fuel_capacity, yacht.ya_engine_no, yacht.ya_start_date, yacht.ya_due_date, yacht.ya_duration FROM customer JOIN yacht ON customer.cu_id=yacht.ya_cu_id WHERE ya_id='" + search + "'");
+                DefaultTableModel tblModel = (DefaultTableModel) tbl_yacht_details.getModel();
+                tblModel.setRowCount(0);
+                while (rst.next()) {
+                    String[] tbData = {rst.getString("cu_name"), rst.getString("ya_do_id"), rst.getString("ya_model"), rst.getString("ya_width"), rst.getString("ya_length"), rst.getString("ya_speed"), rst.getString("ya_fuel_type"), rst.getString("ya_fuel_capacity"), rst.getString("ya_engine_no"), rst.getString("ya_start_date"), rst.getString("ya_due_date"), rst.getString("ya_duration")};
+                    tblModel.addRow(tbData);
+                }
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+
+            try {
+                String dblocation = "jdbc:mysql://localhost/eadproject";
+                String dbuser = "root";
+                String dbpassword = "";
+                Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
+                Statement st = conn.createStatement();
+                ResultSet rst = st.executeQuery("SELECT maintaince_yacht.my_maintaince_type , maintaince_yacht.my_mechanic , maintaince_yacht.my_date , maintaince.ma_price , maintaince_yacht.ma_status , maintaince.ma_note FROM maintaince_yacht JOIN maintaince ON maintaince_yacht.my_maintaince_type = maintaince.ma_type WHERE maintaince_yacht.my_yacht='" + search + "'");
+                DefaultTableModel tblModel = (DefaultTableModel) tbl_maintaince_details.getModel();
+                tblModel.setRowCount(0);
+                while (rst.next()) {
+                    String[] tbData = {rst.getString("maintaince_yacht.my_maintaince_type"), rst.getString("maintaince_yacht.my_mechanic"), rst.getString("maintaince_yacht.my_date"), rst.getString("maintaince.ma_price"), rst.getString("maintaince_yacht.ma_status"), rst.getString("maintaince.ma_note")};
+                    tblModel.addRow(tbData);
+                }
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+
+            try {
+                String dblocation = "jdbc:mysql://localhost/eadproject";
+                String dbuser = "root";
+                String dbpassword = "";
+                Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
+                Statement st = conn.createStatement();
+                ResultSet rst = st.executeQuery("SELECT  pa_details, pa_date, pa_time, pa_amount FROM payment WHERE pa_ya_id='" + search + "'");
+                DefaultTableModel tblModel = (DefaultTableModel) tbl_payment_details_history.getModel();
+                tblModel.setRowCount(0);
+                while (rst.next()) {
+                    String[] tbData = {rst.getString("pa_details"), rst.getString("pa_date"), rst.getString("pa_time"), rst.getString("pa_amount")};
+                    tblModel.addRow(tbData);
+                }
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        } else if (cbx_yacht_id.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Please, select yacht ID before click the search button.");
+            cbx_yacht_id.setBorder(BorderFactory.createLineBorder(Color.RED,2));
         }
+
     }//GEN-LAST:event_btnSearchYachtDetailsActionPerformed
+
+    private void cbx_yacht_idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_yacht_idMouseClicked
+        cbx_yacht_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        getItems();
+    }//GEN-LAST:event_cbx_yacht_idMouseClicked
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        ManagerInterfaceYacht miy = new ManagerInterfaceYacht();
+        ViewManagerInterfaceYacht miy = new ViewManagerInterfaceYacht();
         miy.setVisible(true);
         miy.pack();
         miy.setLocationRelativeTo(null);
@@ -572,13 +599,10 @@ public class ManagerInterfaceYacht extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblTime1;
-    private javax.swing.JLabel lblUser;
-    private javax.swing.JLabel lblUserPosition;
+    private javax.swing.JTable tbl_maintaince_details;
+    private javax.swing.JTable tbl_payment_details_history;
     private javax.swing.JTable tbl_yacht_details;
-    private javax.swing.JLabel txt_emp_position_error;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,31 +24,49 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import controller.ControllerAddYacht;
+import javax.swing.BorderFactory;
 
 /**
  *
  * @author Sarith
  */
-public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
+public class ViewManagerInterfaceAddYacht extends javax.swing.JFrame {
 
     private ControllerAddYacht controller;
-    /**
-     * Creates new form ManagerInterfaceAddYacht
-     */
+
     String path2;
 
-    public ManagerInterfaceAddYacht() {
+    public ViewManagerInterfaceAddYacht() {
         initComponents();
         controller = new ControllerAddYacht();
         date();
-        getItems();
-        getEngineNO();
         cleanDetails();
         cbx_ya_dockplace.removeAllItems();
         btnYacht.setBackground(Color.white);
         Font boldFont = new Font(btnYacht.getFont().getFontName(), Font.BOLD, btnYacht.getFont().getSize());
         btnYacht.setFont(boldFont);
         //btnYacht.setBorder(new EmptyBorder(0, 0, 0, 0));
+        color();
+        txt_emp_position_error.setText(null);
+    }
+
+    public void color() {
+        txt_ya_model.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_ya_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_ya_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_ya_speed.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        yc_ya_year.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_ya_fuel_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_ya_fuel_capacity.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        yc_ya_start_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        yc_ya_due_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_ya_duration.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cbx_ya_dockplace.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cbx_ya_customer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_ya_engine_no.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        lbl_ya_registration_copy.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cbx_search_ya_engine_no.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_ya_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
     public void date() {
@@ -59,7 +77,7 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
     }
 
     public void getItems() {
-        //cbx_ya_customer.removeAllItems();
+        cbx_ya_customer.removeAllItems();
         try {
             String dblocation = "jdbc:mysql://localhost/eadproject";
             String dbuser = "root";
@@ -120,8 +138,6 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblUserPosition = new javax.swing.JLabel();
-        lblUser = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         lblDate = new javax.swing.JLabel();
         lblTime1 = new javax.swing.JLabel();
@@ -230,7 +246,7 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
 
         btnMaintaince.setBackground(new java.awt.Color(0, 204, 204));
         btnMaintaince.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnMaintaince.setText("Maintaince");
+        btnMaintaince.setText("Maintenance");
         btnMaintaince.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnMaintaince.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,17 +325,6 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
         jLabel5.setText("23:04");
         jLabel5.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        lblUserPosition.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUserPosition.setText("Manager");
-        lblUserPosition.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblUserPosition.setPreferredSize(new java.awt.Dimension(200, 50));
-
-        lblUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUser.setText("Sarith Ranathunge");
-        lblUser.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        lblUser.setPreferredSize(new java.awt.Dimension(200, 50));
-
         jButton5.setBackground(new java.awt.Color(153, 153, 153));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
@@ -351,7 +356,7 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 535, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 541, Short.MAX_VALUE)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(157, 157, 157))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -359,24 +364,15 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
                         .addComponent(lblTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
                         .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblUserPosition, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUserPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -415,6 +411,11 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
         txt_ya_model.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         txt_ya_width.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_ya_width.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_ya_widthKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Width (m)        :");
@@ -423,11 +424,21 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
         jLabel7.setText("Length  (m)      :");
 
         txt_ya_length.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_ya_length.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_ya_lengthKeyTyped(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Speed(km/h)  :");
 
         txt_ya_speed.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_ya_speed.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_ya_speedKeyTyped(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Year                :");
@@ -474,6 +485,11 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
                 txt_ya_durationActionPerformed(evt);
             }
         });
+        txt_ya_duration.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_ya_durationKeyTyped(evt);
+            }
+        });
 
         btnClearYachtDetails.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnClearYachtDetails.setText("Clear");
@@ -515,6 +531,24 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
 
         lbl_ya_registration_copy.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        yc_ya_year.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                yc_ya_yearKeyTyped(evt);
+            }
+        });
+
+        yc_ya_start_date.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                yc_ya_start_dateKeyTyped(evt);
+            }
+        });
+
+        yc_ya_due_date.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                yc_ya_due_dateKeyTyped(evt);
+            }
+        });
+
         cbx_ya_dockplace.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cbx_ya_dockplaceMouseClicked(evt);
@@ -544,6 +578,11 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
         jLabel13.setText("Engine No.      :");
 
         cbx_search_ya_engine_no.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cbx_search_ya_engine_no.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbx_search_ya_engine_noMouseClicked(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel19.setText("Engine No.          :");
@@ -781,7 +820,7 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeActionPerformed
-        ManagerInterfaceEmployee mie = new ManagerInterfaceEmployee();
+        ViewManagerInterfaceEmployee mie = new ViewManagerInterfaceEmployee();
         mie.setVisible(true);
         mie.pack();
         mie.setLocationRelativeTo(null);
@@ -789,7 +828,7 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmployeeActionPerformed
 
     private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
-        ManagerInterfaceCustomer mic = new ManagerInterfaceCustomer();
+        ViewManagerInterfaceCustomer mic = new ViewManagerInterfaceCustomer();
         mic.setVisible(true);
         mic.pack();
         mic.setLocationRelativeTo(null);
@@ -801,7 +840,7 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_btnYachtActionPerformed
 
     private void btnDockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDockActionPerformed
-        ManagerInterfaceDock mdock = new ManagerInterfaceDock();
+        ViewManagerInterfaceDock mdock = new ViewManagerInterfaceDock();
         mdock.setVisible(true);
         mdock.pack();
         mdock.setLocationRelativeTo(null);
@@ -809,7 +848,7 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDockActionPerformed
 
     private void btnMaintainceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaintainceActionPerformed
-        ManagerInterfaceAddMaintaince miam = new ManagerInterfaceAddMaintaince();
+        ViewManagerInterfaceAddMaintaince miam = new ViewManagerInterfaceAddMaintaince();
         miam.setVisible(true);
         miam.pack();
         miam.setLocationRelativeTo(null);
@@ -817,7 +856,7 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMaintainceActionPerformed
 
     private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
-        ManagerInterfacePayment mip = new ManagerInterfacePayment();
+        ViewManagerInterfacePayment mip = new ViewManagerInterfacePayment();
         mip.setVisible(true);
         mip.pack();
         mip.setLocationRelativeTo(null);
@@ -827,7 +866,7 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
     private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
         int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to log out?", "conform", JOptionPane.YES_NO_OPTION);
         if (logout == JOptionPane.YES_OPTION) {
-            Login loginpage = new Login();
+            ViewLogin loginpage = new ViewLogin();
             loginpage.setVisible(true);
             loginpage.pack();
             loginpage.setLocationRelativeTo(null);
@@ -840,7 +879,7 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        ManagerInterfaceYacht miy = new ManagerInterfaceYacht();
+        ViewManagerInterfaceYacht miy = new ViewManagerInterfaceYacht();
         miy.setVisible(true);
         miy.pack();
         miy.setLocationRelativeTo(null);
@@ -877,73 +916,53 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
         txt_ya_duration.setText(null);
         txt_ya_engine_no.setText(null);
         lbl_ya_registration_copy.setIcon(null);
-        yc_ya_start_date.setYear(0);
+        yc_ya_start_date.setYear(2023);
         yc_ya_due_date.setYear(0);
         yc_ya_year.setYear(0);
+        txt_ya_id.setText(null);
+        cbx_ya_customer.removeAllItems();
     }
     private void btnClearYachtDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearYachtDetailsActionPerformed
-        cleanDetails();
+        int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to clear the data?", "conform", JOptionPane.YES_NO_OPTION);
+        if (logout == JOptionPane.YES_OPTION) {
+            cleanDetails();
+        }
+
     }//GEN-LAST:event_btnClearYachtDetailsActionPerformed
 
     private void btnUpdateYachtDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateYachtDetailsActionPerformed
 
-        String model = txt_ya_model.getText();
-        Float width = Float.valueOf(txt_ya_width.getText());
-        Float length = Float.valueOf(txt_ya_length.getText());
-        String speed = txt_ya_speed.getText();
-        int year = yc_ya_year.getYear();
-        String fuel_type = txt_ya_fuel_type.getText();
-        String fuel_capacity = txt_ya_fuel_capacity.getText();
-        int start_year = yc_ya_start_date.getYear();
-        int due_date = yc_ya_due_date.getYear();
-        String duration = txt_ya_duration.getText();
-        String dock = cbx_ya_dockplace.getSelectedItem() != null ? cbx_ya_dockplace.getSelectedItem().toString() : "";
-        String customer = cbx_ya_customer.getSelectedItem().toString();
-        String engine = txt_ya_engine_no.getText();
-        int id = Integer.parseInt(txt_ya_id.getText());
-        int updateData = controller.updateData(id, model, width, length, speed, year, path2, fuel_type, fuel_capacity, engine, fuel_type, fuel_type, duration, customer, dock);
-        if (model.equals("")) {
-
-        } else if (txt_ya_width.getText().equals("")) {
-
-        } else if (txt_ya_length.getText().equals("")) {
-
-        } else if (speed.equals("")) {
-
-        } else if (fuel_type.equals("")) {
-
-        } else if (fuel_capacity.equals("")) {
-
-        } else if (duration.equals("")) {
-
-        } else if (dock.equals("")) {
-
-        } else if (customer.equals("")) {
-
-        } else if (engine.equals("")) {
-
+        if (txt_ya_model.getText().equals("")) {
+            // Display an error message
+            JOptionPane.showMessageDialog(this, "Please enter a model for the yacht.");
         } else {
+            // Retrieve the yacht details from the text fields and combo boxes
+            String mod = txt_ya_model.getText();
+            Float width = Float.valueOf(txt_ya_width.getText());
+            Float length = Float.valueOf(txt_ya_length.getText());
+            String speed = txt_ya_speed.getText();
+            int year = yc_ya_year.getYear();
+            String fuel_type = txt_ya_fuel_type.getText();
+            String fuel_capacity = txt_ya_fuel_capacity.getText();
+            int start_year = yc_ya_start_date.getYear();
+            int due_Year = yc_ya_due_date.getYear();
+            Float duration = Float.valueOf(txt_ya_duration.getText());
+            String dock = cbx_ya_dockplace.getSelectedItem().toString();
+            int customer = Integer.parseInt(cbx_ya_customer.getSelectedItem().toString());
+            String engine = txt_ya_engine_no.getText();
+            int id = Integer.parseInt(txt_ya_id.getText());
+            // Update the yacht data in the database
+            int updateData = controller.ddupdateData(id, mod, width, length, speed, year,fuel_type, fuel_capacity, engine, due_Year, start_year, duration, customer, dock);
+            // Check if the data was updated successfully
             if (updateData == 1) {
+                // Display a success message
                 JOptionPane.showMessageDialog(this, " Yacht data has been updated.");
-                cbx_ya_dockplace.removeAllItems();
-                lbl_ya_registration_copy.setIcon(null);
-                txt_ya_model.setText(null);
-                txt_ya_fuel_capacity.setText(null);
-                txt_ya_length.setText(null);
-                txt_ya_width.setText(null);
-                txt_ya_fuel_type.setText(null);
-                txt_ya_speed.setText(null);
-                cbx_ya_dockplace.removeAllItems();
-                txt_ya_duration.setText(null);
-                txt_ya_engine_no.setText(null);
-                lbl_ya_registration_copy.setIcon(null);
-                yc_ya_start_date.setYear(0);
-                yc_ya_due_date.setYear(0);
-                yc_ya_year.setYear(0);
+                // Clear the details
+                cleanDetails();
             } else {
+                // Display an error message
                 JOptionPane.showMessageDialog(this, "Sorry, The data not updated into the database. Try again.");
             }
-
         }
     }//GEN-LAST:event_btnUpdateYachtDetailsActionPerformed
 
@@ -989,7 +1008,7 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
 
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
     }//GEN-LAST:event_btnSearchYachtDetailsActionPerformed
@@ -1007,15 +1026,15 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
                 String dblocation = "jdbc:mysql://localhost/eadproject";
                 String dbuser = "root";
                 String dbpassword = "";
-                Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
-                Statement st = conn.createStatement();
-                ResultSet rst = st.executeQuery("SELECT do_id FROM dock WHERE do_status ='Available' AND do_length>'" + yacht_length + "' AND do_width>'" + yacht_width + "'");
-                while (rst.next()) {
-                    String itemlist = rst.getString("do_id");
-                    cbx_ya_dockplace.addItem(itemlist);
+                try (Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword)) {
+                    Statement st = conn.createStatement();
+                    ResultSet rst = st.executeQuery("SELECT do_id FROM dock WHERE do_status ='Available' AND do_length>'" + yacht_length + "' AND do_width>'" + yacht_width + "'");
+                    while (rst.next()) {
+                        String itemlist = rst.getString("do_id");
+                        cbx_ya_dockplace.addItem(itemlist);
+                    }
                 }
-                conn.close();
-            } catch (Exception e) {
+            } catch (NumberFormatException | SQLException e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
                 System.err.println(e.getMessage());
             }
@@ -1026,7 +1045,7 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_cbx_ya_dockplaceMouseClicked
 
     private void cbx_ya_customerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_ya_customerMouseClicked
-        // TODO add your handling code here:
+        getItems();
     }//GEN-LAST:event_cbx_ya_customerMouseClicked
 
     private void txt_ya_durationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ya_durationActionPerformed
@@ -1038,79 +1057,250 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
     }//GEN-LAST:event_cbx_ya_dockplaceActionPerformed
 
     private void btnAddYachtDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddYachtDetailsActionPerformed
-        String model = txt_ya_model.getText();
-        Float width = Float.valueOf(txt_ya_width.getText());
-        Float length = Float.valueOf(txt_ya_length.getText());
-        String speed = txt_ya_speed.getText();
-        int year = yc_ya_year.getYear();
-        String fuel_type = txt_ya_fuel_type.getText();
-        String fuel_capacity = txt_ya_fuel_capacity.getText();
-        int start_year = yc_ya_start_date.getYear();
-        int due_Year = yc_ya_due_date.getYear();
-        String duration = txt_ya_duration.getText();
-        String dock = cbx_ya_dockplace.getSelectedItem().toString();
-        String customer = cbx_ya_customer.getSelectedItem().toString();
-        String engine = txt_ya_engine_no.getText();
-        int ddinsertData = controller.insertData(model, width, length, speed, year, path2, fuel_type, fuel_capacity, engine, due_Year, start_year, duration, customer, dock);
-        if (model.equals("")) {
-
-        } else if (txt_ya_width.getText().equals("")) {
-
-        } else if (txt_ya_length.getText().equals("")) {
-
-        } else if (speed.equals("")) {
-
-        } else if (fuel_type.equals("")) {
-
-        } else if (fuel_capacity.equals("")) {
-
-        } else if (duration.equals("")) {
-
-        } else if (dock.equals("")) {
-
-        } else if (customer.equals("")) {
-
-        } else if (engine.equals("")) {
-
+// Check if the yacht model is empty
+        if (txt_ya_model.getText().equals("")) {
+            // Display an error message
+            JOptionPane.showMessageDialog(this, "Please enter a model for the yacht.");
         } else {
+            // Retrieve the yacht details from the text fields and combo boxes
+            String model = txt_ya_model.getText();
+            Float width = Float.valueOf(txt_ya_width.getText());
+            Float length = Float.valueOf(txt_ya_length.getText());
+            String speed = txt_ya_speed.getText();
+            int year = yc_ya_year.getYear();
+            String fuel_type = txt_ya_fuel_type.getText();
+            String fuel_capacity = txt_ya_fuel_capacity.getText();
+            int start_year = yc_ya_start_date.getYear();
+            int due_Year = yc_ya_due_date.getYear();
+            Float duration = Float.valueOf(txt_ya_duration.getText());
+            String dock = cbx_ya_dockplace.getSelectedItem().toString();
+            int customer = Integer.parseInt(cbx_ya_customer.getSelectedItem().toString());
+            String engine = txt_ya_engine_no.getText();
+
+            // Insert the yacht data into the database
+            int ddinsertData = controller.ddinsertData(model, width, length, speed, year, path2, fuel_type, fuel_capacity, engine, due_Year, start_year, duration, customer, dock);
+
+            // Check if the data was inserted successfully
             if (ddinsertData == 1) {
+                // Display a success message
                 JOptionPane.showMessageDialog(this, " Yacht data added into database.");
-                cbx_ya_dockplace.removeAllItems();
-                lbl_ya_registration_copy.setIcon(null);
-                txt_ya_model.setText(null);
-                txt_ya_fuel_capacity.setText(null);
-                txt_ya_length.setText(null);
-                txt_ya_width.setText(null);
-                txt_ya_fuel_type.setText(null);
-                txt_ya_speed.setText(null);
-                cbx_ya_dockplace.removeAllItems();
-                txt_ya_duration.setText(null);
-                txt_ya_engine_no.setText(null);
-                lbl_ya_registration_copy.setIcon(null);
-                yc_ya_start_date.setYear(0);
-                yc_ya_due_date.setYear(0);
-                yc_ya_year.setYear(0);
+                // Clear the text fields
+                cleanDetails();
             } else {
+                // Display an error message
                 JOptionPane.showMessageDialog(this, "Sorry, The data not insert into database. Try again.");
             }
-
         }
     }//GEN-LAST:event_btnAddYachtDetailsActionPerformed
 
     private void txt_ya_durationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_ya_durationMouseClicked
         int start = yc_ya_start_date.getYear();
         int due = yc_ya_due_date.getYear();
-        
+
         int calculation = due - start;
-        
+
         txt_ya_duration.setText(String.valueOf(calculation));
     }//GEN-LAST:event_txt_ya_durationMouseClicked
+
+    private void cbx_search_ya_engine_noMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_search_ya_engine_noMouseClicked
+
+        getEngineNO();
+    }//GEN-LAST:event_cbx_search_ya_engine_noMouseClicked
+
+    private void txt_ya_widthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ya_widthKeyTyped
+        char c = evt.getKeyChar();
+        txt_emp_position_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_emp_position_error.setText("Yacht width Can't have any charachter.");
+            txt_ya_model.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_width.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            txt_ya_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_speed.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_year.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_capacity.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_start_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_due_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_duration.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_dockplace.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_customer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_engine_no.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lbl_ya_registration_copy.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        } else {
+            txt_ya_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_ya_widthKeyTyped
+
+    private void txt_ya_lengthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ya_lengthKeyTyped
+        char c = evt.getKeyChar();
+        txt_emp_position_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_emp_position_error.setText("Yacht length Can't have any charachter.");
+            txt_ya_model.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_length.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            txt_ya_speed.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_year.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_capacity.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_start_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_due_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_duration.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_dockplace.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_customer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_engine_no.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lbl_ya_registration_copy.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        } else {
+            txt_ya_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_ya_lengthKeyTyped
+
+    private void txt_ya_speedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ya_speedKeyTyped
+        char c = evt.getKeyChar();
+        txt_emp_position_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_emp_position_error.setText("Yacht speed Can't have any charachter.");
+            txt_ya_model.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_speed.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            yc_ya_year.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_capacity.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_start_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_due_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_duration.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_dockplace.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_customer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_engine_no.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lbl_ya_registration_copy.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        } else {
+            txt_ya_speed.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_ya_speedKeyTyped
+
+    private void yc_ya_yearKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_yc_ya_yearKeyTyped
+        char c = evt.getKeyChar();
+        txt_emp_position_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_emp_position_error.setText("Yacht year Can't have any charachter.");
+            txt_ya_model.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_speed.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_year.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            txt_ya_fuel_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_capacity.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_start_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_due_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_duration.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_dockplace.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_customer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_engine_no.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lbl_ya_registration_copy.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        } else {
+            yc_ya_year.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_yc_ya_yearKeyTyped
+
+    private void yc_ya_start_dateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_yc_ya_start_dateKeyTyped
+        char c = evt.getKeyChar();
+        txt_emp_position_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_emp_position_error.setText("Start year Can't have any charachter.");
+            txt_ya_model.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_speed.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_year.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_capacity.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_start_date.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            yc_ya_due_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_duration.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_dockplace.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_customer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_engine_no.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lbl_ya_registration_copy.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        } else {
+            yc_ya_start_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_yc_ya_start_dateKeyTyped
+
+    private void yc_ya_due_dateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_yc_ya_due_dateKeyTyped
+        char c = evt.getKeyChar();
+        txt_emp_position_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_emp_position_error.setText("Start year Can't have any charachter.");
+            txt_ya_model.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_speed.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_year.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_capacity.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_start_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_due_date.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            txt_ya_duration.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_dockplace.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_customer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_engine_no.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lbl_ya_registration_copy.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        } else {
+            yc_ya_due_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_yc_ya_due_dateKeyTyped
+
+    private void txt_ya_durationKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ya_durationKeyTyped
+        char c = evt.getKeyChar();
+        txt_emp_position_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_emp_position_error.setText("Start year Can't have any charachter.");
+            txt_ya_model.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_speed.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_year.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_fuel_capacity.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_start_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            yc_ya_due_date.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_duration.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            cbx_ya_dockplace.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_ya_customer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ya_engine_no.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lbl_ya_registration_copy.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        } else {
+            txt_ya_duration.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_ya_durationKeyTyped
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        ManagerInterfaceAddYacht miay = new ManagerInterfaceAddYacht();
+        ViewManagerInterfaceAddYacht miay = new ViewManagerInterfaceAddYacht();
         miay.setVisible(true);
         miay.pack();
         miay.setLocationRelativeTo(null);
@@ -1161,8 +1351,6 @@ public class ManagerInterfaceAddYacht extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblTime1;
-    private javax.swing.JLabel lblUser;
-    private javax.swing.JLabel lblUserPosition;
     private javax.swing.JLabel lbl_ya_registration_copy;
     private javax.swing.JLabel txt_emp_position_error;
     private javax.swing.JTextField txt_ya_duration;

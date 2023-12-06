@@ -34,13 +34,13 @@ public class ControllerAddMaintaince {
     
     public int insertdata(String yacht, String maintaince_type, String mechanic, String date, String status)
     {
-        int dbinsertdata = model.dbInsertData(yacht, maintaince_type, mechanic, date, date);
+        int dbinsertdata = model.dbInsertData(yacht, maintaince_type, mechanic, date, status);
         return dbinsertdata;
     }
     
-    public int updatetdata(int id , String yacht, String maintaince_type, String mechanic, String date, String status)
+    public int updatetdata(int id , String yacht, String maintaince_type, String mechanic, String status)
     {
-        int dbupdatedata = model.dbUpdateData(id, yacht, maintaince_type, mechanic, date, status);
+        int dbupdatedata = model.dbUpdateData(id, yacht, maintaince_type, mechanic, status);
         return dbupdatedata;
     }
     

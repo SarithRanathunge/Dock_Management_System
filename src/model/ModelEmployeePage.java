@@ -7,7 +7,7 @@ package model;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import veiw.ManagerInterfaceEmployee;
+import veiw.ViewManagerInterfaceEmployee;
 import javax.swing.JTable;
 
 /**
@@ -16,7 +16,7 @@ import javax.swing.JTable;
  */
 public class ModelEmployeePage {
 
-    public int dbInsertData(String name, String dob, int age, String address, String position, String username, String password, String gender, String email, int telephone, int mobile, String nic) {
+    public int dbInsertData(String name, String dob, int age, String address, String position, String username, String password, String gender, String email, long telephone, long mobile, String nic) {
         try {
             String dblocation = "jdbc:mysql://localhost/eadproject";
             String dbuser = "root";
@@ -32,20 +32,22 @@ public class ModelEmployeePage {
             pst.setString(7, password);
             pst.setString(8, gender);
             pst.setString(9, email);
-            pst.setInt(10, telephone);
-            pst.setInt(11, mobile);
+            pst.setLong(10, telephone);
+            pst.setLong(11, mobile);
             pst.setString(12, nic);
             int value = pst.executeUpdate();
             if (value == 1) {
                 return 1;
             }
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             System.out.println(e.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
         return 0;
     }
-    
-    public int dbUpdateData(int id , String name, String address, String type, String username, String password, String gender, String email, int telephone, int mobile) {
+
+    public int dbUpdateData(int id, String name, String address, String type, String username, String password, String gender, String email, long telephone, long mobile) {
         try {
             String dblocation = "jdbc:mysql://localhost/eadproject";
             String dbuser = "root";
@@ -59,8 +61,8 @@ public class ModelEmployeePage {
             pst.setString(5, password);
             pst.setString(6, gender);
             pst.setString(7, email);
-            pst.setInt(8, telephone);
-            pst.setInt(9, mobile);
+            pst.setLong(8, telephone);
+            pst.setLong(9, mobile);
             pst.setInt(10, id);
             int value = pst.executeUpdate();
             if (value == 1) {
@@ -68,6 +70,8 @@ public class ModelEmployeePage {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
         return 0;
     }

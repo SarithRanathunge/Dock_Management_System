@@ -17,26 +17,28 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import controller.ControllerCustomerPage;
 import java.util.List;
+import javax.swing.BorderFactory;
 
 /**
  *
  * @author Sarith
  */
-public class ManagerInterfaceCustomer extends javax.swing.JFrame {
+public class ViewManagerInterfaceCustomer extends javax.swing.JFrame {
 
     private ControllerCustomerPage controller;
+
     /**
      * Creates new form ManagerInterfaceCustomer
      */
-    public ManagerInterfaceCustomer() {
+    public ViewManagerInterfaceCustomer() {
         initComponents();
         controller = new ControllerCustomerPage();
         date();
-        getItems();
         btnCustomer.setBackground(Color.white);
         Font boldFont = new Font(btnCustomer.getFont().getFontName(), Font.BOLD, btnCustomer.getFont().getSize());
         btnCustomer.setFont(boldFont);
         //btnCustomer.setBorder(new EmptyBorder(0, 0, 0, 0));
+        cbx_cu_id_details.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
     public void date() {
@@ -46,7 +48,7 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
         lblDate.setText(dd);
     }
 
-    public void getItems(){
+    public void getItems() {
         cbx_cu_id_details.removeAllItems();
         List<String> items = controller.getItems();
 
@@ -72,13 +74,10 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblUserPosition = new javax.swing.JLabel();
-        lblUser = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         lblTime1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        txt_emp_position_error = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cbx_cu_id_details = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -86,7 +85,7 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tbl_customer_payment_history = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         customer_table = new javax.swing.JTable();
@@ -154,7 +153,7 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
 
         btnMaintaince.setBackground(new java.awt.Color(0, 204, 204));
         btnMaintaince.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnMaintaince.setText("Maintaince");
+        btnMaintaince.setText("Maintenance");
         btnMaintaince.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnMaintaince.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,17 +232,6 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
         jLabel5.setText("23:04");
         jLabel5.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        lblUserPosition.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUserPosition.setText("Manager");
-        lblUserPosition.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblUserPosition.setPreferredSize(new java.awt.Dimension(200, 50));
-
-        lblUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUser.setText("Sarith Ranathunge");
-        lblUser.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        lblUser.setPreferredSize(new java.awt.Dimension(200, 50));
-
         lblDate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDate.setText("10 / 10 / 2023");
@@ -264,31 +252,20 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
                         .addGap(162, 162, 162)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 892, Short.MAX_VALUE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
-                        .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblUserPosition, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap())
+                        .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(898, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUserPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -304,11 +281,14 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel8.setText("Customer Details");
 
-        txt_emp_position_error.setForeground(new java.awt.Color(255, 0, 0));
-        txt_emp_position_error.setText("The Error");
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Customer ID      :");
+
+        cbx_cu_id_details.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbx_cu_id_detailsMouseClicked(evt);
+            }
+        });
 
         yacht_details_table_customer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         yacht_details_table_customer.setModel(new javax.swing.table.DefaultTableModel(
@@ -327,16 +307,21 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel10.setText("Payment Details History");
 
-        jTable3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_customer_payment_history.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tbl_customer_payment_history.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Yacht ID", "Payment Details", "Payment Date", "Payment Time", "Payment Amount"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        tbl_customer_payment_history.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_customer_payment_historyMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tbl_customer_payment_history);
 
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -378,13 +363,12 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1094, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbx_cu_id_details, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_emp_position_error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(cbx_cu_id_details, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnSearchCustomerDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -402,9 +386,7 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_emp_position_error, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(cbx_cu_id_details, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -448,7 +430,7 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeActionPerformed
-        ManagerInterfaceEmployee mie = new ManagerInterfaceEmployee();
+        ViewManagerInterfaceEmployee mie = new ViewManagerInterfaceEmployee();
         mie.setVisible(true);
         mie.pack();
         mie.setLocationRelativeTo(null);
@@ -460,7 +442,7 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerActionPerformed
 
     private void btnYachtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYachtActionPerformed
-        ManagerInterfaceYacht miy = new ManagerInterfaceYacht();
+        ViewManagerInterfaceYacht miy = new ViewManagerInterfaceYacht();
         miy.setVisible(true);
         miy.pack();
         miy.setLocationRelativeTo(null);
@@ -468,7 +450,7 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnYachtActionPerformed
 
     private void btnDockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDockActionPerformed
-        ManagerInterfaceDock mdock = new ManagerInterfaceDock();
+        ViewManagerInterfaceDock mdock = new ViewManagerInterfaceDock();
         mdock.setVisible(true);
         mdock.pack();
         mdock.setLocationRelativeTo(null);
@@ -476,7 +458,7 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDockActionPerformed
 
     private void btnMaintainceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaintainceActionPerformed
-        ManagerInterfaceAddMaintaince mim = new ManagerInterfaceAddMaintaince();
+        ViewManagerInterfaceAddMaintaince mim = new ViewManagerInterfaceAddMaintaince();
         mim.setVisible(true);
         mim.pack();
         mim.setLocationRelativeTo(null);
@@ -484,7 +466,7 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMaintainceActionPerformed
 
     private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
-        ManagerInterfacePayment mip = new ManagerInterfacePayment();
+        ViewManagerInterfacePayment mip = new ViewManagerInterfacePayment();
         mip.setVisible(true);
         mip.pack();
         mip.setLocationRelativeTo(null);
@@ -494,7 +476,7 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to log out?", "conform", JOptionPane.YES_NO_OPTION);
         if (logout == JOptionPane.YES_OPTION) {
-            Login loginpage = new Login();
+            ViewLogin loginpage = new ViewLogin();
             loginpage.setVisible(true);
             loginpage.pack();
             loginpage.setLocationRelativeTo(null);
@@ -503,7 +485,7 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ManagerInterfaceAddCustomer miac = new ManagerInterfaceAddCustomer();
+        ViewManagerInterfaceAddCustomer miac = new ViewManagerInterfaceAddCustomer();
         miac.setVisible(true);
         miac.pack();
         miac.setLocationRelativeTo(null);
@@ -511,53 +493,85 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnSearchCustomerDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCustomerDetailsActionPerformed
-        String search = cbx_cu_id_details.getSelectedItem().toString();
 
-        //customer details
-        try {
-            String dblocation = "jdbc:mysql://localhost/eadproject";
-            String dbuser = "root";
-            String dbpassword = "";
-            Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
-            Statement st = conn.createStatement();
-            ResultSet rst = st.executeQuery("SELECT cu_id,cu_name,cu_dob,cu_age,cu_gender,cu_address,cu_telephone,cu_mobile,cu_NIC_no,cu_email FROM customer WHERE cu_id='" + search + "'");
-            DefaultTableModel tblModel = (DefaultTableModel) customer_table.getModel();
-            tblModel.setRowCount(0);
-            while (rst.next()) {
-                String[] tbData = {rst.getString("cu_id"), rst.getString("cu_name"), rst.getString("cu_dob"), rst.getString("cu_age"), rst.getString("cu_gender"), rst.getString("cu_address"), rst.getString("cu_telephone"), rst.getString("cu_mobile"), rst.getString("cu_NIC_no"), rst.getString("cu_email")};
-                tblModel.addRow(tbData);
+        if (cbx_cu_id_details.getSelectedItem() != null) {
+            String search = cbx_cu_id_details.getSelectedItem().toString();
+            //customer details
+            try {
+                String dblocation = "jdbc:mysql://localhost/eadproject";
+                String dbuser = "root";
+                String dbpassword = "";
+                Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
+                Statement st = conn.createStatement();
+                ResultSet rst = st.executeQuery("SELECT cu_id,cu_name,cu_dob,cu_age,cu_gender,cu_address,cu_telephone,cu_mobile,cu_NIC_no,cu_email FROM customer WHERE cu_id='" + search + "'");
+                DefaultTableModel tblModel = (DefaultTableModel) customer_table.getModel();
+                tblModel.setRowCount(0);
+                while (rst.next()) {
+                    String[] tbData = {rst.getString("cu_id"), rst.getString("cu_name"), rst.getString("cu_dob"), rst.getString("cu_age"), rst.getString("cu_gender"), rst.getString("cu_address"), rst.getString("cu_telephone"), rst.getString("cu_mobile"), rst.getString("cu_NIC_no"), rst.getString("cu_email")};
+                    tblModel.addRow(tbData);
+                }
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
             }
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
 
-        try {
-            String dblocation = "jdbc:mysql://localhost/eadproject";
-            String dbuser = "root";
-            String dbpassword = "";
-            Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
-            Statement st = conn.createStatement();
-            ResultSet rst = st.executeQuery("SELECT ya_id, ya_model, ya_do_id, ya_width, ya_length, ya_start_date, ya_due_date FROM yacht WHERE ya_cu_id='" + search + "'");
-            DefaultTableModel tblModel = (DefaultTableModel) yacht_details_table_customer.getModel();
-            tblModel.setRowCount(0);
-            while (rst.next()) {
-                String[] tbData = {rst.getString("ya_id"), rst.getString("ya_model"), rst.getString("ya_do_id"), rst.getString("ya_width"), rst.getString("ya_length"), rst.getString("ya_start_date"), rst.getString("ya_due_date")};
-                tblModel.addRow(tbData);
+            try {
+                String dblocation = "jdbc:mysql://localhost/eadproject";
+                String dbuser = "root";
+                String dbpassword = "";
+                Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
+                Statement st = conn.createStatement();
+                ResultSet rst = st.executeQuery("SELECT ya_id, ya_model, ya_do_id, ya_width, ya_length , ya_start_date, ya_due_date FROM yacht WHERE ya_cu_id='" + search + "'");
+                DefaultTableModel tblModel = (DefaultTableModel) yacht_details_table_customer.getModel();
+                tblModel.setRowCount(0);
+                while (rst.next()) {
+                    String[] tbData = {rst.getString("ya_id"), rst.getString("ya_model"), rst.getString("ya_do_id"), rst.getString("ya_width"), rst.getString("ya_length"), rst.getString("ya_start_date"), rst.getString("ya_due_date")};
+                    tblModel.addRow(tbData);
+                }
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
             }
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+
+            try {
+                String dblocation = "jdbc:mysql://localhost/eadproject";
+                String dbuser = "root";
+                String dbpassword = "";
+                Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
+                Statement st = conn.createStatement();
+                ResultSet rst = st.executeQuery("SELECT pa_ya_id, pa_details, pa_date, pa_time, pa_amount FROM payment WHERE pa_cu_id='" + search + "'");
+                DefaultTableModel tblModel = (DefaultTableModel) tbl_customer_payment_history.getModel();
+                tblModel.setRowCount(0);
+                while (rst.next()) {
+                    String[] tbData = {rst.getString("pa_ya_id"), rst.getString("pa_details"), rst.getString("pa_date"), rst.getString("pa_time"), rst.getString("pa_amount")};
+                    tblModel.addRow(tbData);
+                }
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        } else if (cbx_cu_id_details.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Please, select the customer ID before click search button.");
+            cbx_cu_id_details.setBorder(BorderFactory.createLineBorder(Color.RED,2));
         }
 
 
     }//GEN-LAST:event_btnSearchCustomerDetailsActionPerformed
 
+    private void cbx_cu_id_detailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_cu_id_detailsMouseClicked
+        cbx_cu_id_details.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        getItems();
+    }//GEN-LAST:event_cbx_cu_id_detailsMouseClicked
+
+    private void tbl_customer_payment_historyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_customer_payment_historyMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbl_customer_payment_historyMouseClicked
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        ManagerInterfaceCustomer mic = new ManagerInterfaceCustomer();
+        ViewManagerInterfaceCustomer mic = new ViewManagerInterfaceCustomer();
         mic.setVisible(true);
         mic.pack();
         mic.setLocationRelativeTo(null);
@@ -589,12 +603,9 @@ public class ManagerInterfaceCustomer extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable3;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblTime1;
-    private javax.swing.JLabel lblUser;
-    private javax.swing.JLabel lblUserPosition;
-    private javax.swing.JLabel txt_emp_position_error;
+    private javax.swing.JTable tbl_customer_payment_history;
     private javax.swing.JTable yacht_details_table_customer;
     // End of variables declaration//GEN-END:variables
 }

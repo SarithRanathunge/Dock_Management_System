@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1000" pageHeight="842" columnWidth="960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="934359fc-bf64-4a65-81c5-4cc4cddbce93">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="64"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT customer.cu_name, customer.cu_NIC_no, customer.cu_email ,payment.pa_ya_id, payment.pa_details, payment.pa_amount , payment.pa_date , payment.pa_time FROM payment JOIN customer ON payment.pa_cu_id=customer.cu_id]]>
+	</queryString>
+	<field name="cu_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cu_NIC_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cu_email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pa_ya_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pa_details" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pa_amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pa_date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pa_time" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="960" height="110" forecolor="#00CCCC" backcolor="#00CCCC" uuid="70d93063-61f8-46a2-88d9-67280ae2b321"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="210" y="20" width="560" height="38" uuid="1e4a1228-da0a-404d-8f4a-7fbf4ccfc11f"/>
+				<textElement>
+					<font size="28"/>
+				</textElement>
+				<text><![CDATA[Daily Payment Reports in DOCK SERVICES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="780" y="77" width="180" height="21" uuid="a8b8972c-2347-4551-a831-d67fc9e0f46a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Telephone No. 0777132654]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="77" width="169" height="21" uuid="b78ba10e-7a7e-457c-9bb2-055ff18f79c8"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[South east sea, Califonia.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="77" width="154" height="21" uuid="d4dd86ba-4afd-4e25-9609-99cf046a243b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[www.dock services.com]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="25" width="100" height="20" uuid="472394c4-7e5b-4035-bc7f-2856c2b5b25e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="25" width="100" height="20" uuid="f77da548-2bb1-41a8-a2e1-e2e91c0712fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer NIC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="25" width="100" height="20" uuid="6f8d9cde-8780-4254-bf83-f827b033e800"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="25" width="100" height="20" uuid="5ef22540-406a-4206-b00a-e9dbfbb02b2c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Yacht ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="25" width="260" height="20" uuid="d46526d0-8d86-4f60-8515-65b5f8b113ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="660" y="25" width="100" height="20" uuid="6e9ae1d5-e26d-4c8b-b1a6-9937fe06004a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="760" y="25" width="100" height="20" uuid="642c3582-ce89-4735-b1e6-3287ebb23b28"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="860" y="27" width="100" height="20" uuid="eefac6d7-8a4a-4df6-817e-9f58c0434aae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Time]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="45" width="960" height="2" backcolor="#000000" uuid="e4083de0-2934-4848-be22-a279fc9563c4"/>
+			</rectangle>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="100" height="20" uuid="f88b6b18-5a16-4453-8661-9838d5db7e1e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cu_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="10" width="100" height="20" uuid="2bf60f54-a44e-4dcb-ba38-d2a97d4df14f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cu_NIC_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="10" width="100" height="20" uuid="922cf488-79e2-418e-8ba1-9c4643bb9223"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cu_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="10" width="100" height="20" uuid="2d424c6a-b7dd-4b16-bd6e-a030f5c0f83d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pa_ya_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="10" width="260" height="20" uuid="ba5657d0-61b2-4441-be6f-a324a8ccd5bb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pa_details}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="660" y="10" width="100" height="20" uuid="d2b7362a-4086-4078-9b5c-392d8f669510"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pa_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="760" y="10" width="100" height="20" uuid="60069be2-2a41-4b92-8d8d-520a3dc9eede"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pa_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="860" y="10" width="100" height="20" uuid="4f77584e-1b9b-4511-a68d-3a1262278068"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pa_time}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

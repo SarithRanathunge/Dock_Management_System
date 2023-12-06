@@ -18,6 +18,9 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -26,14 +29,13 @@ import javax.swing.table.TableModel;
  *
  * @author Sarith
  */
-public class ManagerInterfaceEmployee extends javax.swing.JFrame {
+public class ViewManagerInterfaceEmployee extends javax.swing.JFrame {
 
     private ControllerEmployeePage controller;
 
-    public ManagerInterfaceEmployee() {
+    public ViewManagerInterfaceEmployee() {
         initComponents();
         controller = new ControllerEmployeePage();
-        getItems();
         date();
         showDataTable();
         btnEmployee.setBackground(Color.white);
@@ -42,6 +44,22 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         //btnEmployee.setBorder(new EmptyBorder(0, 0, 0, 0));
         txt_emp_ID.setEnabled(false);
         txt_emp_ID.setDisabledTextColor(Color.black);
+        color();
+    }
+
+    public void color() {
+        txt_emp_fullname.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        dc_emp_dob.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_emp_age.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cbx_emp_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_emp_address.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_emp_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        pwtxt_emp_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_emp_nic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_emp_email.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_emp_telephone.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_emp_mobile.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cbx_emp_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
     public void date() {
@@ -69,8 +87,6 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblUserPosition = new javax.swing.JLabel();
-        lblUser = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         lblDate = new javax.swing.JLabel();
         lblTime1 = new javax.swing.JLabel();
@@ -110,8 +126,7 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         employe_table = new javax.swing.JTable();
         btnResreshTableData = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        txt_emp_position_error1 = new javax.swing.JLabel();
-        cbx_emp_type1 = new javax.swing.JComboBox<>();
+        cbx_emp_type = new javax.swing.JComboBox<>();
         txt_emp_ID = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
@@ -177,7 +192,7 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
 
         btnMaintaince.setBackground(new java.awt.Color(0, 204, 204));
         btnMaintaince.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnMaintaince.setText("Maintaince");
+        btnMaintaince.setText("Maintenance");
         btnMaintaince.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnMaintaince.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,17 +271,6 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         jLabel5.setText("23:04");
         jLabel5.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        lblUserPosition.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUserPosition.setText("Manager");
-        lblUserPosition.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblUserPosition.setPreferredSize(new java.awt.Dimension(200, 50));
-
-        lblUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUser.setText("Sarith Ranathunge");
-        lblUser.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        lblUser.setPreferredSize(new java.awt.Dimension(200, 50));
-
         jButton5.setBackground(new java.awt.Color(153, 153, 153));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
@@ -298,7 +302,7 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 535, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 541, Short.MAX_VALUE)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(157, 157, 157))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -306,24 +310,15 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
                         .addComponent(lblTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
                         .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblUserPosition, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUserPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -351,6 +346,11 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         jLabel3.setText("Full Name      :");
 
         txt_emp_fullname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_emp_fullname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_emp_fullnameKeyTyped(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setText("Date of Birth  :");
@@ -367,6 +367,11 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         txt_emp_age.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 txt_emp_agePropertyChange(evt);
+            }
+        });
+        txt_emp_age.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_emp_ageKeyTyped(evt);
             }
         });
 
@@ -406,6 +411,11 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         txt_emp_nic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_emp_nicActionPerformed(evt);
+            }
+        });
+        txt_emp_nic.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_emp_nicKeyTyped(evt);
             }
         });
 
@@ -459,16 +469,31 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         });
 
         txt_emp_email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_emp_email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_emp_emailKeyTyped(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel19.setText("Email             :");
 
         txt_emp_telephone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_emp_telephone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_emp_telephoneKeyTyped(evt);
+            }
+        });
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel21.setText("Telephone     :");
 
         txt_emp_mobile.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_emp_mobile.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_emp_mobileKeyTyped(evt);
+            }
+        });
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel25.setText("Mobile          :");
@@ -476,7 +501,11 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel17.setText("Type              :");
 
-        cbx_emp_id.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Employee ID" }));
+        cbx_emp_id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbx_emp_idMouseClicked(evt);
+            }
+        });
         cbx_emp_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbx_emp_idActionPerformed(evt);
@@ -494,11 +523,21 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
                 pwtxt_emp_passwordActionPerformed(evt);
             }
         });
+        pwtxt_emp_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pwtxt_emp_passwordKeyTyped(evt);
+            }
+        });
 
         txt_emp_username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_emp_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_emp_usernameActionPerformed(evt);
+            }
+        });
+        txt_emp_username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_emp_usernameKeyTyped(evt);
             }
         });
 
@@ -538,13 +577,10 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Employee ID  :");
 
-        txt_emp_position_error1.setForeground(new java.awt.Color(255, 0, 0));
-        txt_emp_position_error1.setText("The Error");
-
-        cbx_emp_type1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Employee Type", "Manager", "Mechanic", "Security" }));
-        cbx_emp_type1.addActionListener(new java.awt.event.ActionListener() {
+        cbx_emp_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Employee Type", "Manager", "Mechanic", "Security" }));
+        cbx_emp_type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_emp_type1ActionPerformed(evt);
+                cbx_emp_typeActionPerformed(evt);
             }
         });
 
@@ -553,6 +589,11 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         txt_emp_ID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_emp_IDMouseClicked(evt);
+            }
+        });
+        txt_emp_ID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_emp_IDKeyTyped(evt);
             }
         });
 
@@ -619,19 +660,20 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
                                         .addGroup(jPanel4Layout.createSequentialGroup()
                                             .addComponent(jLabel17)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(cbx_emp_type1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(cbx_emp_type, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel4Layout.createSequentialGroup()
                                             .addComponent(jLabel16)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(txt_emp_address, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addComponent(jLabel21)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txt_emp_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addComponent(jLabel25)
-                                            .addGap(8, 8, 8)
-                                            .addComponent(txt_emp_mobile, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jLabel25)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txt_emp_mobile))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jLabel21)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txt_emp_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel7)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -641,12 +683,9 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
                             .addComponent(jScrollPane1)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_emp_position_error1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbx_emp_id, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbx_emp_id, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(btnSearchEmployeeData, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -687,7 +726,7 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel17)
-                            .addComponent(cbx_emp_type1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbx_emp_type, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
@@ -730,14 +769,10 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
                                     .addComponent(btnResreshTableData, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnSearchEmployeeData, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(txt_emp_position_error1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33))
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel6)
-                                        .addComponent(cbx_emp_id, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(33, 33, 33)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(cbx_emp_id, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -769,7 +804,7 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmployeeActionPerformed
 
     private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
-        ManagerInterfaceCustomer mic = new ManagerInterfaceCustomer();
+        ViewManagerInterfaceCustomer mic = new ViewManagerInterfaceCustomer();
         mic.setVisible(true);
         mic.pack();
         mic.setLocationRelativeTo(null);
@@ -777,7 +812,7 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerActionPerformed
 
     private void btnYachtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYachtActionPerformed
-        ManagerInterfaceYacht miy = new ManagerInterfaceYacht();
+        ViewManagerInterfaceYacht miy = new ViewManagerInterfaceYacht();
         miy.setVisible(true);
         miy.pack();
         miy.setLocationRelativeTo(null);
@@ -785,7 +820,7 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_btnYachtActionPerformed
 
     private void btnDockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDockActionPerformed
-        ManagerInterfaceDock mdock = new ManagerInterfaceDock();
+        ViewManagerInterfaceDock mdock = new ViewManagerInterfaceDock();
         mdock.setVisible(true);
         mdock.pack();
         mdock.setLocationRelativeTo(null);
@@ -793,7 +828,7 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDockActionPerformed
 
     private void btnMaintainceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaintainceActionPerformed
-        ManagerInterfaceAddMaintaince mim = new ManagerInterfaceAddMaintaince();
+        ViewManagerInterfaceAddMaintaince mim = new ViewManagerInterfaceAddMaintaince();
         mim.setVisible(true);
         mim.pack();
         mim.setLocationRelativeTo(null);
@@ -801,7 +836,7 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMaintainceActionPerformed
 
     private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
-        ManagerInterfacePayment mip = new ManagerInterfacePayment();
+        ViewManagerInterfacePayment mip = new ViewManagerInterfacePayment();
         mip.setVisible(true);
         mip.pack();
         mip.setLocationRelativeTo(null);
@@ -811,7 +846,7 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to log out?", "conform", JOptionPane.YES_NO_OPTION);
         if (logout == JOptionPane.YES_OPTION) {
-            Login loginpage = new Login();
+            ViewLogin loginpage = new ViewLogin();
             loginpage.setVisible(true);
             loginpage.pack();
             loginpage.setLocationRelativeTo(null);
@@ -850,11 +885,13 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         }
     }
     private void btnSearchEmployeeDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEmployeeDataActionPerformed
-        String search = cbx_emp_id.getSelectedItem().toString();
+        cbx_emp_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        if (cbx_emp_id.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Please, select the mechanic ID before click search button.");
+            cbx_emp_id.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+        } else if (cbx_emp_id.getSelectedItem() != null) {
 
-        if (search.equals("") || search.equals("Select Employee ID")) {
-
-        } else {
+            String search = cbx_emp_id.getSelectedItem().toString();
             try {
                 String dblocation = "jdbc:mysql://localhost/eadproject";
                 String dbuser = "root";
@@ -876,30 +913,28 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchEmployeeDataActionPerformed
 
     private void btnUpdateEmployeeDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEmployeeDetailsActionPerformed
-        int id = Integer.parseInt(txt_emp_ID.getText());
-        String name = txt_emp_fullname.getText();
-        String dob;
-        int age;
-        String gender = null;
-        if (rbtn_emp_male.isSelected() == true) {
-            gender = "Male";
-        } else if (rbtn_emp_female.isSelected() == true) {
-            gender = "Female";
-        }
-        String position = cbx_emp_id.getSelectedItem().toString();
-        
-        String address = txt_emp_address.getText();
-        String username = txt_emp_username.getText();
-        String password = String.valueOf(pwtxt_emp_password.getPassword());
-        String email = txt_emp_email.getText();
-        int telephone = Integer.parseInt(txt_emp_telephone.getText());
-        int mobile = Integer.parseInt(txt_emp_mobile.getText());
-        int updateData = controller.updatetdata(id, name, address, position, username, password, gender, email, telephone, mobile);
-        if (name.equals("")) {
-
-        } else if (rbtn_emp_male.isSelected() == false && rbtn_emp_female.isSelected() == false) {
-
+        if (txt_emp_fullname.getText() == null || txt_emp_address.getText() == null || txt_emp_username.getText() == null || pwtxt_emp_password.getPassword() == null || txt_emp_nic.getText() == null || txt_emp_telephone.getText() == null || txt_emp_mobile.getText() == null || cbx_emp_type.getSelectedItem().equals("Select Employee Type")) {
+            JOptionPane.showMessageDialog(this, "Please, add data into all required feilds.");
         } else {
+            int id = Integer.parseInt(txt_emp_ID.getText());
+            String name = txt_emp_fullname.getText();
+            String dob;
+            int age;
+            String gender = null;
+            if (rbtn_emp_male.isSelected() == true) {
+                gender = "Male";
+            } else if (rbtn_emp_female.isSelected() == true) {
+                gender = "Female";
+            }
+            String position = cbx_emp_type.getSelectedItem().toString();
+
+            String address = txt_emp_address.getText();
+            String username = txt_emp_username.getText();
+            String password = String.valueOf(pwtxt_emp_password.getPassword());
+            String email = txt_emp_email.getText();
+            long telephone = Integer.parseInt(txt_emp_telephone.getText());
+            long mobile = Integer.parseInt(txt_emp_mobile.getText());
+            int updateData = controller.updatetdata(id, name, address, position, username, password, gender, email, telephone, mobile);
             int logout = JOptionPane.showConfirmDialog(null, "Date of birth, age and NIC no. can not update, Because of the privacy issue.", "Conform", JOptionPane.YES_NO_OPTION);
             if (logout == JOptionPane.YES_OPTION) {
                 if (updateData == 1) {
@@ -941,20 +976,24 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateEmployeeDetailsActionPerformed
 
     private void btnClearEmployeeDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearEmployeeDetailsActionPerformed
-        txt_emp_fullname.setText(null);
-        dc_emp_dob.setDate(null);
-        txt_emp_age.setText(null);
-        rbtn_emp_male.setSelected(false);
-        rbtn_emp_female.setSelected(false);
-        cbx_emp_id.setSelectedItem("Select Employee Type");
-        txt_emp_address.setText(null);
-        txt_emp_username.setText(null);
-        pwtxt_emp_password.setText(null);
-        txt_emp_nic.setText(null);
-        txt_emp_email.setText(null);
-        txt_emp_telephone.setText(null);
-        txt_emp_mobile.setText(null);
-        txt_emp_ID.setText(null);
+        int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to clear the data?", "conform", JOptionPane.YES_NO_OPTION);
+        if (logout == JOptionPane.YES_OPTION) {
+            txt_emp_fullname.setText(null);
+            dc_emp_dob.setDate(null);
+            txt_emp_age.setText(null);
+            rbtn_emp_male.setSelected(false);
+            rbtn_emp_female.setSelected(false);
+            cbx_emp_id.setSelectedItem("Select Employee Type");
+            txt_emp_address.setText(null);
+            txt_emp_username.setText(null);
+            pwtxt_emp_password.setText(null);
+            txt_emp_nic.setText(null);
+            txt_emp_email.setText(null);
+            txt_emp_telephone.setText(null);
+            txt_emp_mobile.setText(null);
+            txt_emp_ID.setText(null);
+        }
+
     }//GEN-LAST:event_btnClearEmployeeDetailsActionPerformed
 
     private void txt_emp_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emp_addressActionPerformed
@@ -993,6 +1032,8 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         }
     }
     private void btnResreshTableDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResreshTableDataActionPerformed
+        cbx_emp_id.removeAllItems();
+        cbx_emp_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         showDataTable();
 
     }//GEN-LAST:event_btnResreshTableDataActionPerformed
@@ -1006,32 +1047,31 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtn_emp_femaleActionPerformed
 
     private void btnAddEmployeeDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeDetailsActionPerformed
-        String name = txt_emp_fullname.getText();
-        String dob = dc_emp_dob.getDate().toString();
-        int age = Integer.parseInt(txt_emp_age.getText());
-        String gender = null;
-        if (rbtn_emp_male.isSelected() == true) {
-            gender = "Male";
-        } else if (rbtn_emp_female.isSelected() == true) {
-            gender = "Female";
-        }
-        String type = (String)cbx_emp_id.getSelectedItem();
-        String address = txt_emp_address.getText();
-        String username = txt_emp_username.getText();
-        String password = String.valueOf(pwtxt_emp_password.getPassword());
-        String email = txt_emp_email.getText();
-        int telephone = Integer.parseInt(txt_emp_telephone.getText());
-        int mobile = Integer.parseInt(txt_emp_mobile.getText());
-        String nic = txt_emp_nic.getText();
-        int insertData = controller.insertdata(name, dob, age, address, type, username, password, gender, email, telephone, mobile, nic);
 
-        if (name.equals("")) {
-
-        } else if (rbtn_emp_male.isSelected() == false && rbtn_emp_female.isSelected() == false) {
-
+        if (txt_emp_fullname.getText() == null || dc_emp_dob.getDate() == null || txt_emp_age.getText() == null || txt_emp_address.getText() == null || txt_emp_username.getText() == null || pwtxt_emp_password.getPassword() == null || txt_emp_nic.getText() == null || txt_emp_email.getText() == null || txt_emp_telephone.getText() == null || txt_emp_mobile.getText() == null || cbx_emp_type.getSelectedItem().equals("Select Employee Type")) {
+            JOptionPane.showMessageDialog(this, "Please, add data into all required feilds.");
         } else {
+            String name = txt_emp_fullname.getText();
+            String dob = dc_emp_dob.getDate().toString();
+            int age = Integer.parseInt(txt_emp_age.getText());
+            String gender = null;
+            if (rbtn_emp_male.isSelected() == true) {
+                gender = "Male";
+            } else if (rbtn_emp_female.isSelected() == true) {
+                gender = "Female";
+            }
+            String position = cbx_emp_type.getSelectedItem().toString();
+            String address = txt_emp_address.getText();
+            String username = txt_emp_username.getText();
+            String password = String.valueOf(pwtxt_emp_password.getPassword());
+            String email = txt_emp_email.getText();
+            long telephone = Integer.parseInt(txt_emp_telephone.getText());
+            long mobile = Integer.parseInt(txt_emp_mobile.getText());
+            String nic = txt_emp_nic.getText();
+            int insertData = controller.insertdata(name, dob, age, address, position, username, password, gender, email, telephone,mobile, nic);
             if (insertData == 1) {
-                JOptionPane.showMessageDialog(this, name + " data added into database.");
+                JOptionPane.showMessageDialog(this, name + " data added into the database.");
+                // Resetting the input fields
                 txt_emp_fullname.setText(null);
                 dc_emp_dob.setDate(null);
                 txt_emp_age.setText(null);
@@ -1046,9 +1086,8 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
                 txt_emp_mobile.setText(null);
                 txt_emp_nic.setText(null);
             } else {
-                JOptionPane.showMessageDialog(this, "Sorry, The data not insert into database. Try again.");
+                JOptionPane.showMessageDialog(this, "Sorry, the data could not be inserted into the database. Please try again.");
             }
-
         }
     }//GEN-LAST:event_btnAddEmployeeDetailsActionPerformed
 
@@ -1083,9 +1122,9 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_emp_agePropertyChange
 
-    private void cbx_emp_type1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_emp_type1ActionPerformed
+    private void cbx_emp_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_emp_typeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbx_emp_type1ActionPerformed
+    }//GEN-LAST:event_cbx_emp_typeActionPerformed
 
     private void employe_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employe_tableMouseClicked
 
@@ -1112,7 +1151,6 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
 //                if (value != null) {
 //                    txt_emp_age.setText(value.toString());
 //                }
-
                 value = model.getValueAt(selectedRow, 4);
                 if (value != null) {
                     if (value.equals("Male")) {
@@ -1124,7 +1162,7 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
 
                 value = model.getValueAt(selectedRow, 5);
                 if (value != null) {
-                    cbx_emp_type1.setSelectedItem(value.toString());
+                    cbx_emp_type.setSelectedItem(value.toString());
                 }
 
                 value = model.getValueAt(selectedRow, 6);
@@ -1146,7 +1184,6 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
 //                if (value != null) {
 //                    txt_emp_nic.setText(value.toString());
 //                }
-
                 value = model.getValueAt(selectedRow, 10);
                 if (value != null) {
                     txt_emp_email.setText(value.toString());
@@ -1172,11 +1209,234 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Employee ID can not add or update to user.");
     }//GEN-LAST:event_txt_emp_IDMouseClicked
 
+    private void txt_emp_fullnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_fullnameKeyTyped
+        char c = evt.getKeyChar();
+        txt_emp_position_error.setText(null);
+        if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
+            evt.consume();
+            txt_emp_position_error.setText("Customer name Can't have any numbers.");
+            txt_emp_fullname.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            dc_emp_dob.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_age.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_emp_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_address.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            pwtxt_emp_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_nic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_email.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_telephone.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_mobile.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_emp_fullname.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_emp_fullnameKeyTyped
+
+    private void txt_emp_ageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_ageKeyTyped
+        char c = evt.getKeyChar();
+        txt_emp_position_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_emp_position_error.setText("Employee age Can't have any charachter.");
+            txt_emp_fullname.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            dc_emp_dob.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_age.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            cbx_emp_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_address.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            pwtxt_emp_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_nic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_email.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_telephone.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_mobile.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_emp_age.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_emp_ageKeyTyped
+
+    private void txt_emp_usernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_usernameKeyTyped
+
+        txt_emp_position_error.setText(null);
+        if (!txt_emp_username.getText().matches("^[a-z]+$")) {
+            txt_emp_position_error.setText("Invalid username.(Only simple letters)");
+            txt_emp_fullname.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            dc_emp_dob.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_age.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_emp_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_address.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_username.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            pwtxt_emp_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_nic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_email.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_telephone.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_mobile.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_emp_position_error.setText(null);
+            txt_emp_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        }
+    }//GEN-LAST:event_txt_emp_usernameKeyTyped
+
+    private void pwtxt_emp_passwordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwtxt_emp_passwordKeyTyped
+
+        txt_emp_position_error.setText(null);
+        String password = new String(pwtxt_emp_password.getPassword());
+        if (password.length() <= 8) {
+            txt_emp_position_error.setText("Password should have a minimum of 8 characters");
+            txt_emp_fullname.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            dc_emp_dob.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_age.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_emp_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_address.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            pwtxt_emp_password.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_emp_nic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_email.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_telephone.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_mobile.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_emp_position_error.setText(null);
+            pwtxt_emp_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        }
+    }//GEN-LAST:event_pwtxt_emp_passwordKeyTyped
+
+    private void txt_emp_nicKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_nicKeyTyped
+        txt_emp_position_error.setText(null);
+        if (txt_emp_nic.getText().length() <= 9) {
+            txt_emp_position_error.setText("Employee NIC no. should have more than 9 characters.");
+            txt_emp_fullname.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            dc_emp_dob.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_age.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_emp_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_address.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            pwtxt_emp_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_nic.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_emp_email.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_telephone.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_mobile.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_emp_nic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_emp_nicKeyTyped
+
+    private void txt_emp_emailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_emailKeyTyped
+        String email = txt_emp_email.getText();
+
+        // Regular expression pattern for basic email validation
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+
+        if (txt_emp_email.getText().isEmpty()) {
+            txt_emp_position_error.setText("Please Enter an Email Address.");
+            txt_emp_fullname.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            dc_emp_dob.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_age.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_emp_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_address.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            pwtxt_emp_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_nic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_email.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_emp_telephone.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_mobile.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            return;
+        } else {
+            txt_emp_email.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_emp_emailKeyTyped
+
+    private void txt_emp_telephoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_telephoneKeyTyped
+        txt_emp_position_error.setText(null);
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_emp_position_error.setText("Employee telephone no. can't have any characters.");
+            txt_emp_fullname.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            dc_emp_dob.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_age.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_emp_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_address.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            pwtxt_emp_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_nic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_email.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_telephone.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_emp_mobile.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else if (txt_emp_telephone.getText().length() < 9 || txt_emp_telephone.getText().length() >= 10) {
+            txt_emp_position_error.setText("Employee telephone no. should have more than 10 characters.");
+            txt_emp_fullname.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            dc_emp_dob.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_age.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_emp_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_address.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            pwtxt_emp_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_nic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_email.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_telephone.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_emp_mobile.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_emp_telephone.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_emp_telephoneKeyTyped
+
+    private void txt_emp_mobileKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_mobileKeyTyped
+        txt_emp_position_error.setText(null);
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_emp_position_error.setText("Employee mobile no. can't have any characters.");
+            txt_emp_fullname.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            dc_emp_dob.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_age.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_emp_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_address.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            pwtxt_emp_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_nic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_email.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_telephone.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_mobile.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+        } else if (txt_emp_mobile.getText().length() < 9 || txt_emp_mobile.getText().length() >= 10) {
+            txt_emp_position_error.setText("Employee mobile no. should have more than 10 characters.");
+            txt_emp_fullname.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            dc_emp_dob.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_age.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_emp_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_address.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            pwtxt_emp_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_nic.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_email.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_telephone.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_mobile.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+        } else {
+            txt_emp_mobile.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_emp_position_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_emp_mobileKeyTyped
+
+    private void txt_emp_IDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_IDKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_emp_IDKeyTyped
+
+    private void cbx_emp_idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_emp_idMouseClicked
+        getItems();
+    }//GEN-LAST:event_cbx_emp_idMouseClicked
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        ManagerInterfaceEmployee mie = new ManagerInterfaceEmployee();
+        ViewManagerInterfaceEmployee mie = new ViewManagerInterfaceEmployee();
         mie.setVisible(true);
         mie.pack();
         mie.setLocationRelativeTo(null);
@@ -1197,7 +1457,7 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
     private javax.swing.JButton btnYacht;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbx_emp_id;
-    private javax.swing.JComboBox<String> cbx_emp_type1;
+    private javax.swing.JComboBox<String> cbx_emp_type;
     private com.toedter.calendar.JDateChooser dc_emp_dob;
     private javax.swing.JTable employe_table;
     private javax.swing.JButton jButton5;
@@ -1226,8 +1486,6 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblTime1;
-    private javax.swing.JLabel lblUser;
-    private javax.swing.JLabel lblUserPosition;
     private javax.swing.JPasswordField pwtxt_emp_password;
     private javax.swing.JRadioButton rbtn_emp_female;
     private javax.swing.JRadioButton rbtn_emp_male;
@@ -1239,7 +1497,6 @@ public class ManagerInterfaceEmployee extends javax.swing.JFrame {
     private javax.swing.JTextField txt_emp_mobile;
     private javax.swing.JTextField txt_emp_nic;
     private javax.swing.JLabel txt_emp_position_error;
-    private javax.swing.JLabel txt_emp_position_error1;
     private javax.swing.JTextField txt_emp_telephone;
     private javax.swing.JTextField txt_emp_username;
     // End of variables declaration//GEN-END:variables

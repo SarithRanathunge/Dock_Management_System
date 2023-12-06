@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -22,23 +23,35 @@ import javax.swing.table.TableModel;
  *
  * @author Sarith
  */
-public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
+public class ViewManagerInterfaceMaintaince extends javax.swing.JFrame {
 
     private ControllerMaintaincePage controller;
 
     /**
      * Creates new form ManagerInterfaceHome
      */
-    public ManagerInterfaceMaintaince() {
+    public ViewManagerInterfaceMaintaince() {
         controller = new ControllerMaintaincePage();
         initComponents();
-        getItems();
         date();
         showDataTable();
         btnMaintaince.setBackground(Color.white);
         Font boldFont = new Font(btnMaintaince.getFont().getFontName(), Font.BOLD, btnMaintaince.getFont().getSize());
         btnMaintaince.setFont(boldFont);
         //btnMaintaince.setBorder(new EmptyBorder(0, 0, 0, 0));
+        txt_add_error.setText(null);
+        txt_ma_up_id.setEnabled(false);
+        txt_ma_up_id.setDisabledTextColor(Color.black);
+    }
+
+    public void Color() {
+        txt_main_note.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_main_price.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_main_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_ma_up_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_ma_up_note.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_ma_up_price.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_ma_up_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
     public void date() {
@@ -65,8 +78,6 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblUserPosition = new javax.swing.JLabel();
-        lblUser = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         lblTime1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -83,7 +94,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         maintaince_table = new javax.swing.JTable();
         btnRefreshTableData = new javax.swing.JButton();
-        txt_emp_position_error = new javax.swing.JLabel();
+        txt_add_error = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txt_main_note = new javax.swing.JTextArea();
         jSeparator4 = new javax.swing.JSeparator();
@@ -93,7 +104,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         txt_ma_up_note = new javax.swing.JTextArea();
         jLabel14 = new javax.swing.JLabel();
-        txt_emp_position_error1 = new javax.swing.JLabel();
+        txt_update_error = new javax.swing.JLabel();
         btnClearDetails = new javax.swing.JButton();
         txt_ma_up_price = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -106,12 +117,10 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         cbx_search_details = new javax.swing.JComboBox<>();
-        txt_emp_position_error2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Maintaince Page > Add, Upadte, Delete, Manage Maintaince Details page");
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1375, 830));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -174,7 +183,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
 
         btnMaintaince.setBackground(new java.awt.Color(0, 204, 204));
         btnMaintaince.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnMaintaince.setText("Maintaince");
+        btnMaintaince.setText("Maintenance");
         btnMaintaince.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnMaintaince.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,17 +262,6 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
         jLabel5.setText("23:04");
         jLabel5.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        lblUserPosition.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUserPosition.setText("Manager");
-        lblUserPosition.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblUserPosition.setPreferredSize(new java.awt.Dimension(200, 50));
-
-        lblUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUser.setText("Sarith Ranathunge");
-        lblUser.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        lblUser.setPreferredSize(new java.awt.Dimension(200, 50));
-
         lblDate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDate.setText("10 / 10 / 2023");
@@ -284,31 +282,20 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
                         .addGap(162, 162, 162)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 892, Short.MAX_VALUE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
-                        .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblUserPosition, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap())
+                        .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(898, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUserPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -322,20 +309,30 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
         jPanel4.setPreferredSize(new java.awt.Dimension(1120, 745));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Available Maintaince");
+        jLabel2.setText("Available Maintenance ");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Maintaince Type :");
+        jLabel3.setText("Maintenance  Type :");
 
         txt_main_type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_main_type.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_main_typeKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Maintaince Price(Rs.) :");
+        jLabel6.setText("Maintenance  Price(Rs.) :");
 
         txt_main_price.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_main_price.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_main_priceKeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Maintaince Note :");
+        jLabel7.setText("Maintenance  Note :");
 
         btnAddDetails.setBackground(new java.awt.Color(0, 204, 0));
         btnAddDetails.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -348,7 +345,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel8.setText("Add New Maintaince Type");
+        jLabel8.setText("Add New Maintenance  Type");
 
         maintaince_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -375,8 +372,8 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
             }
         });
 
-        txt_emp_position_error.setForeground(new java.awt.Color(255, 0, 0));
-        txt_emp_position_error.setText("The Error");
+        txt_add_error.setForeground(new java.awt.Color(255, 0, 0));
+        txt_add_error.setText("The Error");
 
         txt_main_note.setColumns(20);
         txt_main_note.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -384,22 +381,27 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
         jScrollPane3.setViewportView(txt_main_note);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setText("Maintaince ID      :");
+        jLabel12.setText("Maintenance ID      :");
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel13.setText("Maintaince Type :");
+        jLabel13.setText("Maintenance Type :");
 
         txt_ma_up_id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_ma_up_id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_ma_up_idMouseClicked(evt);
+            }
+        });
 
         txt_ma_up_note.setColumns(20);
         txt_ma_up_note.setRows(5);
         jScrollPane4.setViewportView(txt_ma_up_note);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel14.setText("Maintaince Note :");
+        jLabel14.setText("Maintenance Note :");
 
-        txt_emp_position_error1.setForeground(new java.awt.Color(255, 0, 0));
-        txt_emp_position_error1.setText("The Error");
+        txt_update_error.setForeground(new java.awt.Color(255, 0, 0));
+        txt_update_error.setText("The Error");
 
         btnClearDetails.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnClearDetails.setText("Clear");
@@ -410,9 +412,14 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
         });
 
         txt_ma_up_price.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_ma_up_price.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_ma_up_priceKeyTyped(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel15.setText("Maintaince Price(Rs.) :");
+        jLabel15.setText("Maintenance Price(Rs.) :");
 
         btnUpdateDetails.setBackground(new java.awt.Color(0, 0, 153));
         btnUpdateDetails.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -454,9 +461,14 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
         });
 
         txt_ma_up_type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_ma_up_type.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_ma_up_typeKeyTyped(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel16.setText("Update, Delete Maintaince Type");
+        jLabel16.setText("Update, Delete Maintenance  Type");
 
         jButton11.setBackground(new java.awt.Color(0, 153, 153));
         jButton11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -469,12 +481,13 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
         });
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel17.setText("Maintaince ID      :");
+        jLabel17.setText("Maintenance ID      :");
 
-        cbx_search_details.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Maintaince ID" }));
-
-        txt_emp_position_error2.setForeground(new java.awt.Color(255, 0, 0));
-        txt_emp_position_error2.setText("The Error");
+        cbx_search_details.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbx_search_detailsMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -489,8 +502,6 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(txt_emp_position_error2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel17)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cbx_search_details, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -505,69 +516,66 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txt_main_type))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jScrollPane3)))
-                                .addGap(18, 18, 18)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_emp_position_error, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_main_price)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnAddDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnClearDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(22, 22, 22))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                                 .addComponent(jLabel14)
-                                                .addGap(18, 18, 18)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                                 .addComponent(jLabel12)
-                                                .addGap(18, 18, 18)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(txt_ma_up_id, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGap(12, 12, 12)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                                .addComponent(btnUpdateDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnUpdateClear, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btndeleteDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(19, 19, 19))
                                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel13)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txt_ma_up_type, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel15)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txt_ma_up_price, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(txt_update_error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                                        .addGap(168, 168, 168)
-                                                        .addComponent(btnUpdateDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(btnUpdateClear, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(btndeleteDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(txt_emp_position_error1, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(37, 37, 37))))
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 1093, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                                        .addComponent(jLabel13)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(txt_ma_up_type, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(jLabel15)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(txt_ma_up_price, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1093, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jLabel3)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txt_main_type))
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jScrollPane3)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txt_main_price, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnAddDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnClearDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txt_add_error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
@@ -587,7 +595,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_emp_position_error, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_add_error, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -605,24 +613,25 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
                         .addComponent(jLabel15)
                         .addComponent(txt_ma_up_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(txt_emp_position_error1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnUpdateDetails)
-                            .addComponent(btnUpdateClear)
-                            .addComponent(btndeleteDetails))
-                        .addGap(9, 9, 9))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel14)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(66, 66, 66))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(txt_update_error, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnUpdateDetails)
+                                    .addComponent(btnUpdateClear)
+                                    .addComponent(btndeleteDetails))))
+                        .addGap(9, 9, 9)))
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_emp_position_error2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSearchTablesDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel17)
@@ -661,7 +670,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeActionPerformed
-        ManagerInterfaceEmployee mie = new ManagerInterfaceEmployee();
+        ViewManagerInterfaceEmployee mie = new ViewManagerInterfaceEmployee();
         mie.setVisible(true);
         mie.pack();
         mie.setLocationRelativeTo(null);
@@ -669,7 +678,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmployeeActionPerformed
 
     private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
-        ManagerInterfaceCustomer mic = new ManagerInterfaceCustomer();
+        ViewManagerInterfaceCustomer mic = new ViewManagerInterfaceCustomer();
         mic.setVisible(true);
         mic.pack();
         mic.setLocationRelativeTo(null);
@@ -677,7 +686,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerActionPerformed
 
     private void btnYachtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYachtActionPerformed
-        ManagerInterfaceYacht miy = new ManagerInterfaceYacht();
+        ViewManagerInterfaceYacht miy = new ViewManagerInterfaceYacht();
         miy.setVisible(true);
         miy.pack();
         miy.setLocationRelativeTo(null);
@@ -685,7 +694,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_btnYachtActionPerformed
 
     private void btnDockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDockActionPerformed
-        ManagerInterfaceDock mdock = new ManagerInterfaceDock();
+        ViewManagerInterfaceDock mdock = new ViewManagerInterfaceDock();
         mdock.setVisible(true);
         mdock.pack();
         mdock.setLocationRelativeTo(null);
@@ -697,7 +706,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMaintainceActionPerformed
 
     private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
-        ManagerInterfacePayment mip = new ManagerInterfacePayment();
+        ViewManagerInterfacePayment mip = new ViewManagerInterfacePayment();
         mip.setVisible(true);
         mip.pack();
         mip.setLocationRelativeTo(null);
@@ -707,7 +716,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
     private void btnLougoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLougoutActionPerformed
         int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to log out?", "conform", JOptionPane.YES_NO_OPTION);
         if (logout == JOptionPane.YES_OPTION) {
-            Login loginpage = new Login();
+            ViewLogin loginpage = new ViewLogin();
             loginpage.setVisible(true);
             loginpage.pack();
             loginpage.setLocationRelativeTo(null);
@@ -716,7 +725,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLougoutActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        ManagerInterfaceAddMaintaince miam = new ManagerInterfaceAddMaintaince();
+        ViewManagerInterfaceAddMaintaince miam = new ViewManagerInterfaceAddMaintaince();
         miam.setVisible(true);
         miam.pack();
         miam.setLocationRelativeTo(null);
@@ -747,6 +756,7 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
 
     public void showDataTable() {
         try {
+            cbx_search_details.removeAllItems();
             String dblocation = "jdbc:mysql://localhost/eadproject";
             String dbuser = "root";
             String dbpassword = "";
@@ -766,22 +776,20 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
     }
     private void btnRefreshTableDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshTableDataActionPerformed
         showDataTable();
-
+        cbx_search_details.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }//GEN-LAST:event_btnRefreshTableDataActionPerformed
 
     private void btnAddDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDetailsActionPerformed
-        String type = txt_main_type.getText();
-        Float price = Float.valueOf(txt_main_price.getText());
-        String note = txt_main_note.getText();
-        int insertdata = controller.insertData(type, price, note);
 
-        if (type.equals("")) {
-
-        } else if (txt_main_price.getText().equals("")) {
-
-        } else if (note.equals("")) {
-
+        if (txt_main_type.getText() == null || txt_main_price.getText() == null || txt_main_note.getText() == null) {
+            JOptionPane.showMessageDialog(this, "Please add all data.");
+            txt_add_error.setText(null);
         } else {
+            txt_add_error.setText(null);
+            String type = txt_main_type.getText();
+            Float price = Float.valueOf(txt_main_price.getText());
+            String note = txt_main_note.getText();
+            int insertdata = controller.insertData(type, price, note);
             if (insertdata == 1) {
                 JOptionPane.showMessageDialog(this, type + " maintaince data added into the database.");
                 txt_main_type.setText(null);
@@ -796,17 +804,24 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddDetailsActionPerformed
 
     private void btnClearDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearDetailsActionPerformed
-        txt_main_type.setText(null);
-        txt_main_price.setText(null);
-        txt_main_note.setText(null);
+        txt_add_error.setText(null);
+        int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to clear the data?", "conform", JOptionPane.YES_NO_OPTION);
+        if (logout == JOptionPane.YES_OPTION) {
+            txt_main_type.setText(null);
+            txt_main_price.setText(null);
+            txt_main_note.setText(null);
+        }
+
     }//GEN-LAST:event_btnClearDetailsActionPerformed
 
     private void btnSearchTablesDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchTablesDetailsActionPerformed
-        String search = cbx_search_details.getSelectedItem().toString();
 
-        if (search.equals("") || search.equals("Select Maintaince ID")) {
-
+        if (cbx_search_details.getSelectedItem() == null || cbx_search_details.getSelectedItem().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please, select maintenance ID before click the search button.");
+            cbx_search_details.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
         } else {
+            String search = cbx_search_details.getSelectedItem().toString();
+            cbx_search_details.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             try {
                 String dblocation = "jdbc:mysql://localhost/eadproject";
                 String dbuser = "root";
@@ -855,69 +870,156 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
     }//GEN-LAST:event_maintaince_tableMouseClicked
 
     private void btnUpdateClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateClearActionPerformed
-        txt_ma_up_id.setText(null);
-        txt_ma_up_type.setText(null);
-        txt_ma_up_price.setText(null);
-        txt_ma_up_note.setText(null);
+        txt_update_error.setText(null);
+        int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to clear the data?", "conform", JOptionPane.YES_NO_OPTION);
+        if (logout == JOptionPane.YES_OPTION) {
+            txt_ma_up_id.setText(null);
+            txt_ma_up_type.setText(null);
+            txt_ma_up_price.setText(null);
+            txt_ma_up_note.setText(null);
+
+        }
+
     }//GEN-LAST:event_btnUpdateClearActionPerformed
 
     private void btnUpdateDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDetailsActionPerformed
-        int id = Integer.parseInt(txt_ma_up_id.getText());
-        String type = txt_ma_up_type.getText();
-        Float price = Float.valueOf(txt_ma_up_price.getText());
-        String note = txt_ma_up_note.getText();
-        int updatedata = controller.updateData(id, type, price, note);
-
-        if (txt_ma_up_type.getText().equals("")) {
-
-        } else if (type.equals("")) {
-
-        } else if (txt_ma_up_price.getText().equals("")) {
-
-        } else if (note.equals("")) {
-
+        txt_add_error.setText(null);
+        if (txt_ma_up_id.getText().isEmpty() || txt_ma_up_type.getText().isEmpty() || txt_ma_up_price.getText().isEmpty() || txt_ma_up_note.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please add all data.");
         } else {
+            int id;
+            try {
+                id = Integer.parseInt(txt_ma_up_id.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Invalid ID.");
+                return; // Exit the method to prevent further execution
+            }
+            String type = txt_ma_up_type.getText();
+            Float price;
+            try {
+                price = Float.valueOf(txt_ma_up_price.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Invalid price. Please enter a valid point number.");
+                return; // Exit the method to prevent further execution
+            }
+            String note = txt_ma_up_note.getText();
+            int updatedata = controller.updateData(id, type, price, note);
             if (updatedata == 1) {
-                JOptionPane.showMessageDialog(this, type + " maintaince data has been updated.");
+                JOptionPane.showMessageDialog(this, type + " maintenance data has been updated.");
                 txt_ma_up_id.setText(null);
                 txt_ma_up_type.setText(null);
                 txt_ma_up_price.setText(null);
                 txt_ma_up_note.setText(null);
             } else {
-                JOptionPane.showMessageDialog(this, "Sorry, The data not updated into the database. Try again.");
+                JOptionPane.showMessageDialog(this, "Sorry, the data was not updated into the database. Please try again.");
             }
         }
     }//GEN-LAST:event_btnUpdateDetailsActionPerformed
 
     private void btndeleteDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteDetailsActionPerformed
-        int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?", "conform", JOptionPane.YES_NO_OPTION);
-        if (logout == JOptionPane.YES_OPTION) {
-            int id = Integer.parseInt(txt_ma_up_id.getText());
-            String type = txt_ma_up_type.getText();
-            int deletedata = controller.deleteData(id);
+        txt_add_error.setText(null);
+        if (txt_ma_up_id.getText().isEmpty() || txt_ma_up_type.getText().isEmpty() || txt_ma_up_price.getText().isEmpty() || txt_ma_up_note.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please add all data.");
+        } else {
+            int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?", "conform", JOptionPane.YES_NO_OPTION);
+            if (logout == JOptionPane.YES_OPTION) {
+                int id = Integer.parseInt(txt_ma_up_id.getText());
+                String type = txt_ma_up_type.getText();
+                int deletedata = controller.deleteData(id);
 
-            if (txt_ma_up_type.getText().equals("")) {
+                if (txt_ma_up_type.getText().equals("")) {
 
-            } else {
-                if (deletedata == 1) {
-                    JOptionPane.showMessageDialog(this, type + " maintaince data has been deleted.");
-                    txt_ma_up_id.setText(null);
-                    txt_ma_up_type.setText(null);
-                    txt_ma_up_price.setText(null);
-                    txt_ma_up_note.setText(null);
                 } else {
-                    JOptionPane.showMessageDialog(this, "Sorry, The data not deleted in the database. Try again.");
+                    if (deletedata == 1) {
+                        JOptionPane.showMessageDialog(this, type + " maintaince data has been deleted.");
+                        txt_ma_up_id.setText(null);
+                        txt_ma_up_type.setText(null);
+                        txt_ma_up_price.setText(null);
+                        txt_ma_up_note.setText(null);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Sorry, The data not deleted in the database. Try again.");
+                    }
                 }
             }
         }
 
+
     }//GEN-LAST:event_btndeleteDetailsActionPerformed
+
+    private void cbx_search_detailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbx_search_detailsMouseClicked
+        cbx_search_details.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        getItems();
+    }//GEN-LAST:event_cbx_search_detailsMouseClicked
+
+    private void txt_main_typeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_main_typeKeyTyped
+        char c = evt.getKeyChar();
+        txt_add_error.setText(null);
+        if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
+            evt.consume();
+            txt_add_error.setText("Maintenance type Can't have any numbers.");
+            txt_main_type.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_main_price.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_main_note.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_main_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_add_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_main_typeKeyTyped
+
+    private void txt_main_priceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_main_priceKeyTyped
+        char c = evt.getKeyChar();
+        txt_add_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_add_error.setText("Maintenance price Can't have any charachter.");
+            txt_main_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_main_price.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_main_note.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_main_price.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_add_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_main_priceKeyTyped
+
+    private void txt_ma_up_idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_ma_up_idMouseClicked
+        JOptionPane.showMessageDialog(this, "Sorry, Maintenance ID can't update.");
+    }//GEN-LAST:event_txt_ma_up_idMouseClicked
+
+    private void txt_ma_up_typeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ma_up_typeKeyTyped
+        char c = evt.getKeyChar();
+        txt_update_error.setText(null);
+        if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
+            evt.consume();
+            txt_update_error.setText("Maintenance type Can't have any numbers.");
+            txt_ma_up_type.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_ma_up_price.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ma_up_note.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_ma_up_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_update_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_ma_up_typeKeyTyped
+
+    private void txt_ma_up_priceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ma_up_priceKeyTyped
+        char c = evt.getKeyChar();
+        txt_update_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_update_error.setText("Maintenance price Can't have any charachter.");
+            txt_ma_up_type.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_ma_up_price.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_ma_up_note.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_ma_up_price.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_update_error.setText(null);
+        }
+    }//GEN-LAST:event_txt_ma_up_priceKeyTyped
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        ManagerInterfaceMaintaince mim = new ManagerInterfaceMaintaince();
+        ViewManagerInterfaceMaintaince mim = new ViewManagerInterfaceMaintaince();
         mim.setVisible(true);
         mim.pack();
         mim.setLocationRelativeTo(null);
@@ -966,12 +1068,8 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblTime1;
-    private javax.swing.JLabel lblUser;
-    private javax.swing.JLabel lblUserPosition;
     private javax.swing.JTable maintaince_table;
-    private javax.swing.JLabel txt_emp_position_error;
-    private javax.swing.JLabel txt_emp_position_error1;
-    private javax.swing.JLabel txt_emp_position_error2;
+    private javax.swing.JLabel txt_add_error;
     private javax.swing.JTextField txt_ma_up_id;
     private javax.swing.JTextArea txt_ma_up_note;
     private javax.swing.JTextField txt_ma_up_price;
@@ -979,5 +1077,6 @@ public class ManagerInterfaceMaintaince extends javax.swing.JFrame {
     private javax.swing.JTextArea txt_main_note;
     private javax.swing.JTextField txt_main_price;
     private javax.swing.JTextField txt_main_type;
+    private javax.swing.JLabel txt_update_error;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,15 +5,23 @@
 package veiw;
 
 import controller.ControllerLoginPage;
+import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
-public class Login extends javax.swing.JFrame {
+public class ViewLogin extends javax.swing.JFrame {
 
     private ControllerLoginPage controller;
 
-    public Login() {
+    public ViewLogin() {
         initComponents();
         controller = new ControllerLoginPage();
+        txt_emp_position_error.setText(null);
+        txt_username_error.setText(null);
+        txt_password_error.setText(null);
+        cbx_emp_position.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        pwtxt_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
     @SuppressWarnings("unchecked")
@@ -41,7 +49,6 @@ public class Login extends javax.swing.JFrame {
         setTitle("Login Page");
         setMinimumSize(new java.awt.Dimension(850, 630));
         setName("login"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -110,6 +117,11 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("Username");
 
         txt_username.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txt_username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_usernameKeyTyped(evt);
+            }
+        });
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -117,6 +129,11 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setText("Password");
 
         pwtxt_password.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        pwtxt_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pwtxt_passwordKeyTyped(evt);
+            }
+        });
 
         txt_password_error.setForeground(new java.awt.Color(255, 0, 0));
         txt_password_error.setText("The Error");
@@ -212,49 +229,80 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-
-        String position = cbx_emp_position.getSelectedItem().toString();
-        String username = txt_username.getText();
-        String password = String.valueOf(pwtxt_password.getPassword());
-        String usertype = controller.validateLogin(username, password, position);
-        
-        String capitalizedusername = username.substring(0, 1).toUpperCase() + username.substring(1);
-
-        if (position.equals("") || position.equals("Select your position")) {
-
-        } else if (username.equals("")) {
-
-        } else if (password.equals("")) {
-
+        if (cbx_emp_position.getSelectedIndex() == 0 && txt_username.getText() == null && pwtxt_password.getPassword() == null) {
+            JOptionPane.showMessageDialog(this, "Please, fill all the required fileds.");
         } else {
+            String position = cbx_emp_position.getSelectedItem().toString();
+            String username = txt_username.getText();
+            String password = String.valueOf(pwtxt_password.getPassword());
+            String usertype = controller.validateLogin(username, password, position);
+
+            String capitalizedusername = username.substring(0, 1).toUpperCase() + username.substring(1);
+
             if (usertype != null) {
                 if (usertype.equals("Manager") || usertype.equals("manager") || usertype.equals("Manager")) {
                     JOptionPane.showMessageDialog(this, capitalizedusername + " , Your Login Succuessfull.");
-                    ManagerInterfaceEmployee mie = new ManagerInterfaceEmployee();
+                    ViewManagerInterfaceEmployee mie = new ViewManagerInterfaceEmployee();
                     mie.setVisible(true);
                     mie.pack();
                     mie.setLocationRelativeTo(null);
                     this.dispose();
                 } else if (usertype.equals("Mechanic") || usertype.equals("Mechanic") || usertype.equals("MECHENIC")) {
                     JOptionPane.showMessageDialog(this, capitalizedusername + " , Your Login Succuessfull.");
-                    MechanicInterface mi = new MechanicInterface();
+                    ViewMechanicInterface mi = new ViewMechanicInterface();
                     mi.setVisible(true);
                     mi.pack();
                     mi.setLocationRelativeTo(null);
                     this.dispose();
                 }
-                
+
             } else {
                 JOptionPane.showMessageDialog(this, " Invalid username or password.");
             }
         }
+    
+
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txt_usernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usernameKeyTyped
+        char c = evt.getKeyChar();
+        txt_username_error.setText(null);
+        txt_password_error.setText(null);
+        if (!txt_username.getText().matches("^[a-z]+$")) {
+            txt_username_error.setText("Invalid username.(Only simple letters)");
+            cbx_emp_position.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_username.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            pwtxt_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_username_error.setText(null);
+            cbx_emp_position.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            pwtxt_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        }
+    }//GEN-LAST:event_txt_usernameKeyTyped
+
+    private void pwtxt_passwordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwtxt_passwordKeyTyped
+        txt_password_error.setText(null);
+        txt_username_error.setText(null);
+        String password = new String(pwtxt_password.getPassword());
+        if (password.length() <= 8) {
+            txt_password_error.setText("Password should have a minimum of 8 characters");
+            cbx_emp_position.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            pwtxt_password.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+        } else {
+            txt_password_error.setText(null);
+            cbx_emp_position.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            pwtxt_password.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        }
+    }//GEN-LAST:event_pwtxt_passwordKeyTyped
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        Login login_frame = new Login();
+        ViewLogin login_frame = new ViewLogin();
         login_frame.setVisible(true);
         login_frame.pack();
         login_frame.setLocationRelativeTo(null);

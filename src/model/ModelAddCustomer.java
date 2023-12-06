@@ -16,14 +16,14 @@ import javax.swing.JOptionPane;
  */
 public class ModelAddCustomer {
 
-    public int dbInserData(String name, String dob, int age, String address, String gender, String email, int telephone, int mobile, String nic, String image) {
+    public int dbInserData(String name, String dob, int age, String address, String gender, String email, int telephone, int mobile, String nic, String path2) {
         try {
             String dblocation = "jdbc:mysql://localhost/eadproject";
             String dbuser = "root";
             String dbpassword = "";
             Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
             PreparedStatement pst = conn.prepareStatement("INSERT INTO customer(cu_name, cu_dob, cu_age, cu_gender, cu_NIC_copy, cu_address, cu_telephone, cu_mobile, cu_NIC_no, cu_email) VALUES (?,?,?,?,?,?,?,?,?,?)");
-            InputStream is=new FileInputStream(new File(image));
+            InputStream is=new FileInputStream(new File(path2));
             pst.setString(1, name);
             pst.setString(2, dob);
             pst.setInt(3, age);
@@ -45,24 +45,22 @@ public class ModelAddCustomer {
         return 0;
     }
 
-    public int dbUpdateData(String id, String name, String address, String gender, String email, int telephone, int mobile, String image) {
+    public int dbUpdateData(int id, String name, String address, String gender, String email, int telephone,int mobile, String path2) {
         try {
             String dblocation = "jdbc:mysql://localhost/eadproject";
             String dbuser = "root";
             String dbpassword = "";
             Connection conn = DriverManager.getConnection(dblocation, dbuser, dbpassword);
-            File file = new File(image);
-            FileInputStream fis = new FileInputStream(file);
-            byte[] dbimage = new byte[(int)file.length()];
+            InputStream img = new FileInputStream(path2);
             PreparedStatement pst = conn.prepareStatement("UPDATE customer SET cu_name=?,cu_gender=?, cu_NIC_copy=?,cu_address=?,cu_telephone=?,cu_mobile=?,cu_email=? WHERE cu_id = ?");
             pst.setString(1, name);
             pst.setString(2, gender);
-            pst.setBytes(3, dbimage);
+            pst.setBlob(3, img);
             pst.setString(4, address);
             pst.setInt(5, telephone);
             pst.setInt(6, mobile);
             pst.setString(7, email);
-            pst.setString(8, id);
+            pst.setInt(8, id);
             int value = pst.executeUpdate();
             if (value == 1) {
                 return 1;

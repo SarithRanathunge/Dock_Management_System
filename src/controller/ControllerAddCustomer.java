@@ -4,6 +4,7 @@
  */
 package controller;
 
+import java.io.FileNotFoundException;
 import model.ModelAddCustomer;
 
 /**
@@ -19,15 +20,15 @@ public class ControllerAddCustomer {
         model = new ModelAddCustomer();
     }
     
-    public int insertData(String name,String dob,int age,String address,String gender,String email,int telephone,int mobile,String nic,String image)
+    public int insertData(String name,String dob,int age,String address,String gender,String email,int telephone,int mobile,String nic,String path2)
     {
-        int dbinsertdata = model.dbInserData(name, dob, age, address, gender, email, telephone, mobile, nic, image);
+        int dbinsertdata = model.dbInserData(name, dob, age, address, gender, email, telephone, mobile, nic, path2);
         return dbinsertdata;
     }
     
-    public int UpdateData(String id,String name,String address,String gender,String email,int telephone,int mobile, String image)
+    public int UpdateData(int id,String name,String address,String gender,String email,int telephone,int mobile, String path2) throws FileNotFoundException
     {
-        int dbupdatedata = model.dbUpdateData(id, name, address, gender, email, telephone, mobile, image);
+        int dbupdatedata = model.dbUpdateData(id, name, address, gender, email, telephone, mobile, path2);
         return dbupdatedata;
     }
     

@@ -6,6 +6,7 @@ package veiw;
 
 import controller.ControllerDockPage;
 import java.awt.Color;
+import static java.awt.Color.red;
 import java.awt.Font;
 import java.sql.*;
 import java.sql.Connection;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -23,22 +25,25 @@ import javax.swing.table.TableModel;
  *
  * @author Sarith
  */
-public class ManagerInterfaceDock extends javax.swing.JFrame {
+public class ViewManagerInterfaceDock extends javax.swing.JFrame {
 
     private ControllerDockPage controller;
 
     /**
      * Creates new form ManagerInterfaceDock
      */
-    public ManagerInterfaceDock() {
+    public ViewManagerInterfaceDock() {
         controller = new ControllerDockPage();
         initComponents();
         date();
         tableDatashowing();
+        Color();
         btnDock.setBackground(Color.white);
         Font boldFont = new Font(btnDock.getFont().getFontName(), Font.BOLD, btnDock.getFont().getSize());
         btnDock.setFont(boldFont);
         //btnDock.setBorder(new EmptyBorder(0, 0, 0, 0));
+        txt_dock_edit_error.setText(null);
+        txt_emp_position_error.setText(null);
     }
 
     public void date() {
@@ -65,8 +70,6 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblUserPosition = new javax.swing.JLabel();
-        lblUser = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         lblTime1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -162,7 +165,7 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
 
         btnMaintaince.setBackground(new java.awt.Color(0, 204, 204));
         btnMaintaince.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnMaintaince.setText("Maintaince");
+        btnMaintaince.setText("Maintenance");
         btnMaintaince.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnMaintaince.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,17 +244,6 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
         jLabel5.setText("23:04");
         jLabel5.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        lblUserPosition.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUserPosition.setText("Manager");
-        lblUserPosition.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblUserPosition.setPreferredSize(new java.awt.Dimension(200, 50));
-
-        lblUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUser.setText("Sarith Ranathunge");
-        lblUser.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        lblUser.setPreferredSize(new java.awt.Dimension(200, 50));
-
         lblDate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDate.setText("10 / 10 / 2023");
@@ -272,31 +264,20 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
                         .addGap(162, 162, 162)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 892, Short.MAX_VALUE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
-                        .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblUserPosition, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap())
+                        .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(898, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUserPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTime1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -316,12 +297,22 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
         jLabel3.setText("Dock ID                 :");
 
         txt_dock_id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_dock_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_dock_idKeyTyped(evt);
+            }
+        });
 
         cbx_dock_status.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbx_dock_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a status", "Available", "Taken" }));
         cbx_dock_status.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbx_dock_statusActionPerformed(evt);
+            }
+        });
+        cbx_dock_status.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cbx_dock_statusKeyTyped(evt);
             }
         });
 
@@ -347,11 +338,21 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
         jScrollPane1.setViewportView(dockTableData);
 
         txt_dock_length.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_dock_length.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_dock_lengthKeyTyped(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setText("Dock Length(m)    :");
 
         txt_dock_width.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_dock_width.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_dock_widthKeyTyped(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setText("Dock Width(m)     :");
@@ -360,6 +361,11 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
         jLabel16.setText("Dock Price(Rs.)      :");
 
         txt_dock_price.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_dock_price.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_dock_priceKeyTyped(evt);
+            }
+        });
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel17.setText("Dock Status          :");
@@ -452,11 +458,21 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
                 txt_dock_length_searchMouseClicked(evt);
             }
         });
+        txt_dock_length_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_dock_length_searchKeyTyped(evt);
+            }
+        });
 
         txt_dock_width_search.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_dock_width_search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_dock_width_searchMouseClicked(evt);
+            }
+        });
+        txt_dock_width_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_dock_width_searchKeyTyped(evt);
             }
         });
 
@@ -473,29 +489,29 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                            .addComponent(btnDeleteDockDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAddDockDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnUpdateDockDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_dock_id, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cbx_dock_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_dock_price, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_dock_length, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_dock_price))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_dock_width, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnDeleteDockDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAddDockDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_dock_width))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel17)
+                                .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbx_dock_status, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnUpdateDockDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txt_dock_length, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_dock_id, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(txt_dock_edit_error, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
                     .addComponent(btnClearDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -612,7 +628,7 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeActionPerformed
-        ManagerInterfaceEmployee mie = new ManagerInterfaceEmployee();
+        ViewManagerInterfaceEmployee mie = new ViewManagerInterfaceEmployee();
         mie.setVisible(true);
         mie.pack();
         mie.setLocationRelativeTo(null);
@@ -620,7 +636,7 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmployeeActionPerformed
 
     private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
-        ManagerInterfaceCustomer mic = new ManagerInterfaceCustomer();
+        ViewManagerInterfaceCustomer mic = new ViewManagerInterfaceCustomer();
         mic.setVisible(true);
         mic.pack();
         mic.setLocationRelativeTo(null);
@@ -628,7 +644,7 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerActionPerformed
 
     private void btnYachtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYachtActionPerformed
-        ManagerInterfaceYacht miy = new ManagerInterfaceYacht();
+        ViewManagerInterfaceYacht miy = new ViewManagerInterfaceYacht();
         miy.setVisible(true);
         miy.pack();
         miy.setLocationRelativeTo(null);
@@ -640,7 +656,7 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDockActionPerformed
 
     private void btnMaintainceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaintainceActionPerformed
-        ManagerInterfaceAddMaintaince mim = new ManagerInterfaceAddMaintaince();
+        ViewManagerInterfaceAddMaintaince mim = new ViewManagerInterfaceAddMaintaince();
         mim.setVisible(true);
         mim.pack();
         mim.setLocationRelativeTo(null);
@@ -648,7 +664,7 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMaintainceActionPerformed
 
     private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
-        ManagerInterfacePayment mip = new ManagerInterfacePayment();
+        ViewManagerInterfacePayment mip = new ViewManagerInterfacePayment();
         mip.setVisible(true);
         mip.pack();
         mip.setLocationRelativeTo(null);
@@ -658,7 +674,7 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to log out?", "conform", JOptionPane.YES_NO_OPTION);
         if (logout == JOptionPane.YES_OPTION) {
-            Login loginpage = new Login();
+            ViewLogin loginpage = new ViewLogin();
             loginpage.setVisible(true);
             loginpage.pack();
             loginpage.setLocationRelativeTo(null);
@@ -667,66 +683,73 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnClearDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearDetailsActionPerformed
-        txt_dock_id.setText(null);
-        txt_dock_length.setText(null);
-        txt_dock_width.setText(null);
-        txt_dock_price.setText(null);
-        cbx_dock_status.setSelectedItem("Select a status");
+        int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to clear the data?", "conform", JOptionPane.YES_NO_OPTION);
+        if (logout == JOptionPane.YES_OPTION) {
+            txt_dock_id.setText(null);
+            txt_dock_length.setText(null);
+            txt_dock_width.setText(null);
+            txt_dock_price.setText(null);
+            cbx_dock_status.setSelectedItem("Select a status");
+        }
     }//GEN-LAST:event_btnClearDetailsActionPerformed
 
     private void btnUpdateDockDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDockDetailsActionPerformed
-        String dockid = txt_dock_id.getText();
-        float docklength = Float.parseFloat(txt_dock_length.getText());
-        float dockwidth = Float.parseFloat(txt_dock_width.getText());
-        float dockprice = Float.parseFloat(txt_dock_price.getText());
-        String dockstatus = cbx_dock_status.getSelectedItem().toString();
-        int updateData = controller.updateData(dockid, docklength, dockwidth, dockprice, dockstatus);
-        if (dockid.equals("")) {
-
-        } else if (docklength == 0 || Float.isNaN(docklength)) {
-
-        } else if (dockwidth == 0 || Float.isNaN(docklength)) {
-
-        } else if (dockprice == 0 || Float.isNaN(docklength)) {
-
-        } else if (dockstatus.equals("") || dockstatus.equals("Select a status")) {
-
+        txt_dock_edit_error.setText(null);
+        if (txt_dock_id.getText() == null || txt_dock_length.getText() == null || txt_dock_width.getText() == null || txt_dock_price.getText() == null || cbx_dock_status.getSelectedItem().equals("Select a status")) {
+            JOptionPane.showMessageDialog(this, "Please add all data.");
         } else {
-            if (updateData == 1) {
-                JOptionPane.showMessageDialog(this, dockid + " dock data has been updated.");
-                txt_dock_id.setText(null);
-                txt_dock_length.setText(null);
-                txt_dock_width.setText(null);
-                txt_dock_price.setText(null);
-                cbx_dock_status.setSelectedItem("Select a status");
-            } else {
-                JOptionPane.showMessageDialog(this, "Sorry, The dock data has not been updated. Try again.");
-            }
-
-        }
-    }//GEN-LAST:event_btnUpdateDockDetailsActionPerformed
-
-    private void btnDeleteDockDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDockDetailsActionPerformed
-        int logout = JOptionPane.showConfirmDialog(null, "Are you sure, you want to delete?", "conform", JOptionPane.YES_NO_OPTION);
-        if (logout == JOptionPane.YES_OPTION) {
-            String dockid = txt_dock_id.getText();
-            int deleteData = controller.deleteData(dockid);
-            if (dockid.equals("")) {
-
-            } else {
-                if (deleteData == 1) {
-                    JOptionPane.showMessageDialog(this, dockid + " dock data has been deleted.");
+            int logout = JOptionPane.showConfirmDialog(this, "Are you sure, do you want to update?", "conform", JOptionPane.YES_NO_OPTION);
+            if (logout == JOptionPane.YES_OPTION) {
+                Color();
+                String dockid = txt_dock_id.getText();
+                float docklength = Float.parseFloat(txt_dock_length.getText());
+                float dockwidth = Float.parseFloat(txt_dock_width.getText());
+                float dockprice = Float.parseFloat(txt_dock_price.getText());
+                String dockstatus = cbx_dock_status.getSelectedItem().toString();
+                int updateData = controller.updateData(dockid, docklength, dockwidth, dockprice, dockstatus);
+                if (updateData == 1) {
+                    JOptionPane.showMessageDialog(this, dockid + " dock data has been updated.");
                     txt_dock_id.setText(null);
                     txt_dock_length.setText(null);
                     txt_dock_width.setText(null);
                     txt_dock_price.setText(null);
                     cbx_dock_status.setSelectedItem("Select a status");
                 } else {
-                    JOptionPane.showMessageDialog(this, "Sorry, The dock data has not been deleted. Try again.");
+                    JOptionPane.showMessageDialog(this, "Sorry, The dock data has not been updated. Try again.");
                 }
+            }
 
+        }
+    }//GEN-LAST:event_btnUpdateDockDetailsActionPerformed
+
+    private void btnDeleteDockDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDockDetailsActionPerformed
+        txt_dock_edit_error.setText(null);
+        if (txt_dock_id.getText() == null || txt_dock_length.getText() == null || txt_dock_width.getText() == null || txt_dock_price.getText() == null || cbx_dock_status.getSelectedItem().equals("Select a status")) {
+            JOptionPane.showMessageDialog(this, "Please add all data.");
+        } else {
+            Color();
+            int logout = JOptionPane.showConfirmDialog(this, "Are you sure, do you want to delete?", "conform", JOptionPane.YES_NO_OPTION);
+            if (logout == JOptionPane.YES_OPTION) {
+                String dockid = txt_dock_id.getText();
+                int deleteData = controller.deleteData(dockid);
+                if (dockid.equals("")) {
+
+                } else {
+                    if (deleteData == 1) {
+                        JOptionPane.showMessageDialog(this, dockid + " dock data has been deleted.");
+                        txt_dock_id.setText(null);
+                        txt_dock_length.setText(null);
+                        txt_dock_width.setText(null);
+                        txt_dock_price.setText(null);
+                        cbx_dock_status.setSelectedItem("Select a status");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Sorry, The dock data has not been deleted. Try again.");
+                    }
+
+                }
             }
         }
+
 
     }//GEN-LAST:event_btnDeleteDockDetailsActionPerformed
 
@@ -753,11 +776,15 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
     }
 
     private void btnRefreshTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshTableActionPerformed
-
+        txt_dock_edit_error.setText(null);
         tableDatashowing();
     }//GEN-LAST:event_btnRefreshTableActionPerformed
 
     private void btnSearchDockDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDockDetailsActionPerformed
+        txt_dock_edit_error.setText(null);
+        txt_dock_length_search.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_dock_width_search.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cbx_dock_status_search.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         String search_status = cbx_dock_status_search.getSelectedItem().toString();
         String search_width_text = txt_dock_width_search.getText();
@@ -783,7 +810,7 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
             } catch (NumberFormatException e) {
                 System.out.println("Invalid width or length format");
             } catch (SQLException ex) {
-                Logger.getLogger(ManagerInterfaceDock.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ViewManagerInterfaceDock.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(this, "Please, Fill add the data to yacht length and width and select yacht status the feilds.");
@@ -792,23 +819,17 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchDockDetailsActionPerformed
 
     private void btnAddDockDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDockDetailsActionPerformed
-        String dockid = txt_dock_id.getText();
-        float docklength = Float.parseFloat(txt_dock_length.getText());
-        float dockwidth = Float.parseFloat(txt_dock_width.getText());
-        float dockprice = Float.parseFloat(txt_dock_price.getText());
-        String dockstatus = cbx_dock_status.getSelectedItem().toString();
-        int insertData = controller.insertData(dockid, docklength, dockwidth, dockprice, dockstatus);
-        if (dockid.equals("")) {
-
-        } else if (docklength == 0 || Float.isNaN(docklength)) {
-
-        } else if (dockwidth == 0 || Float.isNaN(docklength)) {
-
-        } else if (dockprice == 0 || Float.isNaN(docklength)) {
-
-        } else if (dockstatus.equals("") || dockstatus.equals("Select a status")) {
-
+        txt_dock_edit_error.setText(null);
+        if (txt_dock_id.getText() == null || txt_dock_length.getText() == null || txt_dock_width.getText() == null || txt_dock_price.getText() == null || cbx_dock_status.getSelectedItem().equals("Select a status")) {
+            JOptionPane.showMessageDialog(this, "Please add all data.");
         } else {
+            Color();
+            String dockid = txt_dock_id.getText();
+            float docklength = Float.parseFloat(txt_dock_length.getText());
+            float dockwidth = Float.parseFloat(txt_dock_width.getText());
+            float dockprice = Float.parseFloat(txt_dock_price.getText());
+            String dockstatus = cbx_dock_status.getSelectedItem().toString();
+            int insertData = controller.insertData(dockid, docklength, dockwidth, dockprice, dockstatus);
             if (insertData == 1) {
                 JOptionPane.showMessageDialog(this, dockid + " dock data added into database.");
                 txt_dock_id.setText(null);
@@ -869,6 +890,16 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_btnSearchDockDetailsMouseClicked
 
+    public void Color() {
+        txt_dock_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_dock_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_dock_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_dock_price.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cbx_dock_status.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_dock_length_search.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txt_dock_width_search.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        cbx_dock_status_search.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    }
     private void txt_dock_length_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_dock_length_searchMouseClicked
         txt_emp_position_error.setText(null);
     }//GEN-LAST:event_txt_dock_length_searchMouseClicked
@@ -881,11 +912,113 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
         txt_emp_position_error.setText(null);
     }//GEN-LAST:event_cbx_dock_status_searchMouseClicked
 
+    private void txt_dock_idKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dock_idKeyTyped
+        txt_dock_edit_error.setText(null);
+        if (!txt_dock_id.getText().matches("[A-Z][0-9]+")) {
+            txt_dock_edit_error.setText("Dock ID is invalid format. Ex:A1234");
+            txt_dock_id.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_dock_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_price.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_dock_status.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_dock_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        }
+    }//GEN-LAST:event_txt_dock_idKeyTyped
+
+    private void txt_dock_lengthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dock_lengthKeyTyped
+        char c = evt.getKeyChar();
+        txt_dock_edit_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_dock_edit_error.setText("Dock length Can't be a charachter.");
+            txt_dock_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_length.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_dock_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_price.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_dock_status.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_dock_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        }
+    }//GEN-LAST:event_txt_dock_lengthKeyTyped
+
+    private void txt_dock_widthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dock_widthKeyTyped
+        char c = evt.getKeyChar();
+        txt_dock_edit_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_dock_edit_error.setText("Dock width Can't be a charachter.");
+            txt_dock_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_width.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_dock_price.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_dock_status.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_dock_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        }
+    }//GEN-LAST:event_txt_dock_widthKeyTyped
+
+    private void txt_dock_priceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dock_priceKeyTyped
+        char c = evt.getKeyChar();
+        txt_dock_edit_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_dock_edit_error.setText("Dock price Can't be a charachter.");
+            txt_dock_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_price.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            cbx_dock_status.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_dock_price.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        }
+    }//GEN-LAST:event_txt_dock_priceKeyTyped
+
+    private void cbx_dock_statusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbx_dock_statusKeyTyped
+        txt_dock_edit_error.setText(null);
+        if (cbx_dock_status.getSelectedIndex() == 0) {
+            txt_dock_edit_error.setText("Please, select the dock status.");
+            txt_dock_id.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_length.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_width.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_price.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_dock_status.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+        }
+    }//GEN-LAST:event_cbx_dock_statusKeyTyped
+
+    private void txt_dock_length_searchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dock_length_searchKeyTyped
+        char c = evt.getKeyChar();
+        txt_emp_position_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_emp_position_error.setText("Dock length Can't be a charachter.");
+            txt_dock_length_search.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            txt_dock_width_search.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            cbx_dock_status_search.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_dock_length_search.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        }
+    }//GEN-LAST:event_txt_dock_length_searchKeyTyped
+
+    private void txt_dock_width_searchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dock_width_searchKeyTyped
+        char c = evt.getKeyChar();
+        txt_emp_position_error.setText(null);
+        if (!Character.isDigit(c) && c != '.') {
+            evt.consume();
+            txt_emp_position_error.setText("Dock width Can't be a charachter.");
+            txt_dock_length_search.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txt_dock_width_search.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            cbx_dock_status_search.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        } else {
+            txt_dock_width_search.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        }
+    }//GEN-LAST:event_txt_dock_width_searchKeyTyped
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        ManagerInterfaceDock mdock = new ManagerInterfaceDock();
+        ViewManagerInterfaceDock mdock = new ViewManagerInterfaceDock();
         mdock.setVisible(true);
         mdock.pack();
         mdock.setLocationRelativeTo(null);
@@ -929,8 +1062,6 @@ public class ManagerInterfaceDock extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblTime1;
-    private javax.swing.JLabel lblUser;
-    private javax.swing.JLabel lblUserPosition;
     private javax.swing.JLabel txt_dock_edit_error;
     private javax.swing.JTextField txt_dock_id;
     private javax.swing.JTextField txt_dock_length;
